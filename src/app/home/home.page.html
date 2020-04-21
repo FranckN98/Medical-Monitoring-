@@ -1,20 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Medical Monitoring
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" padding>
+
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>Ready to use your app?</strong>
+     
+    <ion-item id="rounded" *ngIf="logInwithId">
+      <ion-label position="floating">Patient Id</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item  id="rounded" *ngIf="!logInwithId">
+
+      <ion-label position="floating">Name</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item id="rounded"  *ngIf="!logInwithId">
+      <ion-label>Birthday</ion-label>
+      <ion-datetime  placeholder="Select Date"></ion-datetime>
+    </ion-item>
+
+    <section>
+      <ion-button expand="block">Find a Patient &nbsp;<ion-icon name="person"></ion-icon></ion-button>
+    </section>
+    <br>
+    <section>
+      <ion-button expand="block" color="tertiary" (click)="logInwithId=!logInwithId">
+        <p *ngIf="!logInwithId">Login with Patient id</p>
+        <p *ngIf="logInwithId">Login with Name and Birthday</p>
+
+      </ion-button>
+    </section>
   </div>
 </ion-content>

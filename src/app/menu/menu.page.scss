@@ -1,0 +1,74 @@
+#container
+{
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 300px; 
+  margin-left:auto; 
+  margin-right: auto; 
+ 
+}
+  #rounded 
+  {
+      width: 100%;
+      margin-bottom: 10px;  
+  
+  }
+
+
+.card1{
+
+    --background : DarkMagenta;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 10px #777;
+}
+
+.card2{
+
+    --background : LightCoral;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 10px #777;
+}
+
+.card3{
+
+    --background : RoyalBlue;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 10px #777;
+}
+
+.card4{
+    --background : YellowGreen;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 10px #777;
+
+}
+
+.card5{
+
+    --background : Sienna;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 15px 10px #777;
+}
+
+.card6{
+
+    --background : black;
+    color: white;
+    font-weight: 500;
+    -webkit-box-shadow: 0 15px 10px #777;
+    -moz-box-shadow: 0 15px 10px #777;
+    box-shadow: 0 15px 10px #777;
+}
+
+ion-title{
+    text-transform: capitalize; 
+}

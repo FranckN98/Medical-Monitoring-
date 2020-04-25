@@ -1,0 +1,77 @@
+.header{
+    background-color: #2196F3;
+    height:180px;
+    padding: 1px;
+}
+.tabs{
+    background-color: #2196F3;
+    color: white;
+}
+.header h2
+{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px 0px 30px;
+}
+
+
+.followings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.followings p {
+    color: white;
+    margin: 8px 0px 0px 0px;
+}
+
+.img-box{
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.border-white {
+    border: white solid 4px;
+    border-radius: 50%;
+    width: fit-content;
+}
+
+.border-blue {
+    border: 7px solid #006bbf;
+    border-radius: 50%;
+    width: fit-content;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    margin-top: -76px;
+}
+.item-avatar img
+ {     
+    width:20% !important;  
+    height : 20% !important;  
+    max-width: 70px !important;  
+    max-height: 70px !important; 
+}
+
+.info ion-label {
+    line-height: 1!important;
+    font-size: 15px;
+    margin: 6px 0px 6px 0px!important;
+    min-height: 34px;
+
+}
+
+.info {
+    padding: 5px;
+
+}

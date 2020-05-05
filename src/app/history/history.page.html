@@ -9,10 +9,7 @@
   </ion-header>
   
   <ion-content class="ion-padding">
-  
-  
-  
-  
+
     
      <div *ngIf="!showAddEvent" lines="none"> 
         <ion-segment value="DAY" scrollable>
@@ -27,10 +24,7 @@
           </ion-segment-button>
         </ion-segment>
       </div> 
-  
-      
-  
-    
+
   
     <div *ngIf="showAddEvent" class="ion-padding">
   <!-- TODO ranger par ordre alphabetique -->
@@ -74,15 +68,12 @@
           
             <ion-input type="text" placeholder="Label"   [(ngModel)]="label" required></ion-input>
         </ion-item>
-
-      
     <br>
       
       <ion-button color="secondary" expand="block" (click)="addEvent()">Ajouter</ion-button>
 
     </div>
-  
-    
+
     <br>
     <calendar id="myCalendar"
       locale="en-GB"

@@ -1,0 +1,122 @@
+
+<ion-content padding>
+  <div class="header">
+    <h2 text-wrap>Consultation</h2>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="changeStep()" disabled="backButton">
+    <ion-fab-button>
+      <ion-icon *ngIf="step1 || step2" name="arrow-forward-outline"></ion-icon>
+      <ion-icon *ngIf="step3" name="checkmark-done-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="Start" slot="fixed" (click)=" backStep()">
+    <ion-fab-button >
+      <ion-icon   name="arrow-back-outline"></ion-icon>
+      
+    </ion-fab-button>
+  </ion-fab>
+
+   <div class="content" *ngIf="step1">
+    
+      <ion-item lines="nones">
+        <ion-label>Where have hurt?</ion-label>
+        <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="Headache">Headache</ion-select-option>
+          <ion-select-option value="Stomach aches">Stomach aches </ion-select-option>
+          <ion-select-option value="Sore throats">Sore throats</ion-select-option>
+          <ion-select-option value="Back pain">Back pain</ion-select-option>
+          <ion-select-option value="Teeth ache">Teeth ache</ion-select-option>
+          <ion-select-option value="Other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="nones">
+        <ion-label >If other specify here :</ion-label>
+        <ion-input placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-item mode="md">
+        <ion-label position="floating"> How bad ?</ion-label>
+        <ion-range  min="0" max="30" step="10" value="10" snaps pin color="secondary">
+          
+          <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
+        </ion-range>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating"> How long has it been ?</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+      </ion-item>
+ 
+      <ion-item mode="md">
+        <ion-label position="floating"> Do you have Fieber ?</ion-label>
+        <ion-range  min="36" max="42" step="0.5" value="0" snaps pin color="danger">
+          
+          <ion-icon slot="end" color="danger" name="thermometer"></ion-icon>
+        </ion-range>
+      </ion-item>
+   </div>
+
+   <div class="content" *ngIf="step2">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="imageItem">
+            <div class="image"><img src="../../assets/consultation/toux.jpg" alt=""></div>
+            <div class="text"> <ion-checkbox color="secondary"  slot="start"></ion-checkbox>&nbsp;Cough</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="imageItem">
+            <div class="image"><img src="../../assets/consultation/vomissement.jpg" alt=""></div>
+            <div class="text"> <ion-checkbox color="secondary"  slot="start"></ion-checkbox>&nbsp;Vomiting</div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="imageItem">
+            <div class="image"><img src="../../assets/consultation/fatigue.jpg" alt=""></div>
+            <div class="text"> <ion-checkbox color="secondary"  slot="start"></ion-checkbox>&nbsp;Tiredness</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="imageItem">
+            <div class="image"><img src="../../assets/vertige.JPG" alt=""></div>
+            <div class="text"> <ion-checkbox color="secondary"  slot="start"></ion-checkbox>&nbsp;Dizziness</div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="imageItem">
+            <div class="image"><img src="../../assets/insomnie.JPG" alt=""></div>
+            <div class="text"> <ion-checkbox color="secondary"  slot="start"></ion-checkbox>&nbsp;Insomnia</div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="imageItem">
+            <div class="image"><img src="../../assets/rhume.JPG" alt=""></div>
+            <div class="text"> <ion-checkbox color="secondary"  slot="start"></ion-checkbox>&nbsp;Cold</div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      
+
+      <ion-row>
+        <ion-col>
+          
+          <ion-item>
+            <ion-label position="fixed">Fixed Label</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+ </div>
+    
+</ion-content>

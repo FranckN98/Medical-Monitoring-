@@ -1,0 +1,75 @@
+
+  .header
+{
+    background-color: #2196F3;
+    height:100px;
+    padding: 1px;
+    text-align: center;
+    color: white;
+
+}
+
+.imageScroll{
+  display: flex;
+
+  overflow-x: scroll;
+  
+
+
+}
+
+.scrollItem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageScroll .scrollItem img{
+
+  height: 80px;
+  width: 60px;
+ 
+ 
+
+}
+
+.imageScroll .scrollItem p{
+  font-size: 11px;
+  text-align: center;
+  margin: 4px 0px 0px 0px;
+  font-weight: 500;
+  color: #383a3e;
+}
+
+ion-item{
+  
+      width: 100%;
+      margin: 10px;  
+  
+
+}
+
+ion-label {
+  font-weight: 500;
+  color: #2196F3 ;
+  
+  margin: 10px;
+}
+
+.content{
+  
+  
+  margin: 20px;
+  
+}
+
+.imageItem{
+  height: 150px;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+}
+
+.image{
+  margin : 6px;
+}

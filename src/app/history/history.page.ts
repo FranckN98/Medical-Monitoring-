@@ -61,9 +61,6 @@ export class HistoryPage implements OnInit {
 
   addEvent()
   {
-
-    
-
     this.showHideForm();
   }
   changeMode(mode: string)
@@ -82,12 +79,9 @@ export class HistoryPage implements OnInit {
     var index = -1;
     
     for(let i = 0; i< this.fields.length; i++)
-    {
       if(this.fields[i].label === label )
-      {
         index = i; 
-      }
-    }
+      
     if (index != -1)
     {
       console.log(index)

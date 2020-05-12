@@ -1,0 +1,14 @@
+p{
+    text-align: center;
+}
+
+.ion-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    height: 160px;
+    width: 160px;
+}

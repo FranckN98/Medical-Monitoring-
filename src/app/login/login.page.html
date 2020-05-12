@@ -6,4 +6,100 @@
 
 <ion-content>
 
+  <div class="padding" *ngIf="!registration">
+
+    <div class="logo">
+      <ion-icon name="person-outline" color="primary"></ion-icon>
+    </div>
+
+    <ion-item >
+      <ion-label position="floating" >Email</ion-label>
+      <ion-input  type="mail"  [(ngModel)]="email"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label  position="floating" >Passwort</ion-label>
+      <ion-input  type="password" [(ngModel)]="password" required></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item lines="none">
+      <ion-button slot="end" fill="clear" >Passwort vergessen ? </ion-button>
+    </ion-item>
+    <ion-item *ngIf="passwordDifferent">
+      <br>
+       <ion-text color="danger" text-center>Email oder Passwort nicht korrekt!</ion-text>
+    </ion-item>
+
+    <ion-button type="submit" fill="outline" expand="block"><b>Anmelden</b></ion-button>
+    <br>
+    <ion-button expand="block" (click)="registration=true"><b>Registration</b></ion-button>
+   
+  </div>  
+
+
+
+  <div class="padding" *ngIf="registration">
+    <br>
+    <ion-item >
+      <ion-label  position="floating"><b>Name</b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" [(ngModel)]="person.name" required></ion-input>
+    </ion-item>
+    
+    <ion-item >
+      <ion-label position="floating" ><b>Vorname</b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  type="text" [(ngModel)]="person.vorname" required ></ion-input>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label   position="floating" ><b>Geboren am </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime   [(ngModel)]="person.geburtstag" doneText="OK" cancelText="Abbrechen" max="2005" min="1950" class="datetime-placeholder" displayFormat="DDD. MMM DD, YYYY" ></ion-datetime>
+    </ion-item>
+
+    <ion-item >
+      <ion-label position="floating" ><b>Email </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-input   type="mail" position="floating" [(ngModel)]="person.email" required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"><b>Passwort </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="password" [(ngModel)]="person.passwort" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label  position="floating"><b>Passwort wiederholen </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="password" [(ngModel)]="cpassword" required="true" ></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item lines="none">
+      <ion-checkbox color="success" [(ngModel)]="conditionAccepted" required> </ion-checkbox>
+      <ion-text color="primary" >  Ich akzeptiere die Geschäftsbedingungen und die Datenschutzerklärung  </ion-text>
+    </ion-item>
+
+    <ion-item *ngIf="passwordDifferent">
+      <br>
+       <ion-text color="danger" text-center>Passwort verschieden! Bitte überprüfe dein Passwort erneut</ion-text>
+    </ion-item>
+    <ion-item *ngIf="conditionAccepted">
+      <br>
+       <ion-text color="danger" text-center>Du solltest mit unseren Geschäftsbedingungen einverstanden sein, um dich bei uns registrieren zu können</ion-text>
+    </ion-item>
+
+    <ion-item *ngIf="emailAlreadyUsed">
+      <br>
+       <ion-text color="danger" text-center>Email Adresse bereits vergeben! Klicke auf Anmelden wenn du bei uns schon registriert bist</ion-text>
+    </ion-item>
+
+    <br>
+    <ion-button type="submit" shape="round"  expand="block" >Fortfahren </ion-button>
+
+    <ion-item lines="none">
+      <ion-label>Schon registriert? </ion-label>
+      <ion-button slot="end" fill="clear" (click)="registration=false">Anmelden</ion-button>
+    </ion-item>
+   
+  </div>
+
+  
 </ion-content>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
+import { GeneralService } from '../service/general.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  connected : boolean;
+  constructor(public generalService:GeneralService) 
+  { 
+
+  }
 
   ngOnInit() {
   }
-
+  login(email:string, password:string)
+  {
+    this.generalService.login(email,password);
+    this.connected = this.generalService.connected;
+  }
 }

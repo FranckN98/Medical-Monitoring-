@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <h1 *ngIf="connected" >Connected!!</h1>
 
   <div class="padding" *ngIf="!registration">
 
@@ -31,7 +32,7 @@
        <ion-text color="danger" text-center>Email oder Passwort nicht korrekt!</ion-text>
     </ion-item>
 
-    <ion-button type="submit" fill="outline" expand="block"><b>Anmelden</b></ion-button>
+    <ion-button type="submit" fill="outline" expand="block" (click)="login(email,password)"><b>Anmelden</b></ion-button>
     <br>
     <ion-button expand="block" (click)="registration=true"><b>Registration</b></ion-button>
    

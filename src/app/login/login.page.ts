@@ -9,6 +9,7 @@ import { GeneralService } from '../service/general.service';
 })
 export class LoginPage implements OnInit {
 
+  doctor: boolean;
   connected : boolean;
   constructor(public generalService:GeneralService) 
   { 
@@ -21,5 +22,6 @@ export class LoginPage implements OnInit {
   {
     this.generalService.login(email,password);
     this.connected = this.generalService.connected;
+    this.doctor = this.generalService.doctor;
   }
 }

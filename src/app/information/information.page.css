@@ -85,3 +85,16 @@
 {
     padding: 5px;
 }
+.itemStyle{
+    margin-bottom: 15px !important;
+    width: 90%;
+    margin: auto;
+    border-radius: 8px;
+    background-color: #eaeaea;
+}  
+
+.invalid {
+    border: 1px solid #f90000;
+    border-radius: 5px;
+}
+

@@ -10,42 +10,6 @@
 
 
 <ion-content>
-
-  <ion-menu side="start" content-id="main-content">
-    <ion-header>
-      <ion-toolbar translucent>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>
-          <ion-icon name="mail" slot="start"></ion-icon>
-          <ion-label>Inbox</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="paper-plane" slot="start"></ion-icon>
-          <ion-label>Outbox</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="heart" slot="start"></ion-icon>
-          <ion-label>Favorites</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="archive" slot="start"></ion-icon>
-          <ion-label>Archived</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="trash" slot="start"></ion-icon>
-          <ion-label>Trash</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="warning" slot="start"></ion-icon>
-          <ion-label>Spam</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
  
   <div  id="container">
 
@@ -53,7 +17,7 @@
       <h3>Patient data</h3>
       <ion-row>
         <ion-col>
-          <ion-card button="true" class="card1" type="button"  >
+          <ion-card button="true" class="card1" type="button" routerLink="/info"  >
          
               <h1 orange><ion-icon name="body-sharp"></ion-icon></h1>
               <p>Global Health information</p>
@@ -62,9 +26,9 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card button="true" class="card2" type="button" >
-            <h1 orange><ion-icon name="medkit-sharp"></ion-icon></h1>
-            <p>Ongoing Treatment</p>
+          <ion-card button="true" class="card2" type="button" routerLink="/chat">
+            <h1 orange><ion-icon name="chatbubbles"></ion-icon></h1>
+            <p>Start Chating with a Doctor</p>
             <ion-ripple-effect></ion-ripple-effect>
           </ion-card>
         </ion-col>
@@ -72,14 +36,14 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-card button="true" type="button" class="card3" >
+          <ion-card button="true" type="button" class="card3" routerLink="/history">
             <h1 orange><ion-icon name="receipt"></ion-icon></h1>
             <p>Medical history</p>
             <ion-ripple-effect></ion-ripple-effect>
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card button="true" type="button"  class="card4">
+          <ion-card button="true" type="button"  class="card4" routerLink="/consult">
             <h1 orange><ion-icon name="git-network"></ion-icon></h1>
             <p>Consultation</p>
             <ion-ripple-effect></ion-ripple-effect>
@@ -106,19 +70,6 @@
 
     </ion-grid>
   </div>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="dashboard">
-        <ion-icon name="speedometer"></ion-icon>
-        <ion-label>Dashboard</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="products">
-        <ion-icon name="list"></ion-icon>
-        <ion-label>Termine</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
   
 </ion-content>
 

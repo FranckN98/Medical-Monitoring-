@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="stream" >
+    <ion-item lines="none" *ngFor="let message of messages">
+     <ion-badge text-wrap slot="start" color="light">{{ message.text }}</ion-badge>
+		<ion-badge text-wrap slot="end" color="primary">{{ message.text }}</ion-badge>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer >
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" class="input-col">
+        <ion-input [(ngModel)]="messageText" type="text" placeholder="Enter your message"></ion-input>
+      </ion-col>
+      <ion-col size="2" class="send-col">
+        <ion-button shape="full" (click)="sendMessage()">
+          <ion-icon name="paper-plane"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

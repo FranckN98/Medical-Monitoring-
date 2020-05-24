@@ -1,3 +1,5 @@
+import { GeneralService } from './../service/general.service';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Component, OnInit , ViewChild } from '@angular/core';
 
 import { CalendarComponent } from 'ionic2-calendar/calendar';
@@ -18,22 +20,59 @@ export class HistoryPage implements OnInit {
   mode:string = "month";
   currentMonth: string; 
   showAddEvent: boolean; 
+  visits = [];
   fields = [];
   label : string; 
-  allEvents = [];
-  employee: string;
-  employees: any[] = [];
-  newEvent = {
-    title: '',
-    description: '',
-    imageURL: '',
-    startTime:'' ,
-    endTime: '',
+
+  visit = {
+    id : "",
+    reason : "",
+    temperature : "",
+    prescription : "", 
+    dateOfvisit: this.currentDate,
+    nextVisit : new Date(),
+    other : this.fields
   }
+ 
+  calendar = {
+    mode: 'month',
+    currentDate: new Date(),
+    dateFormatter: {
+        formatMonthViewDay: function(date:Date) {
+            return date.getDate().toString();
+        },
+        formatMonthViewDayHeader: function(date:Date) {
+            return 'MonMH';
+        },
+        formatMonthViewTitle: function(date:Date) {
+            return 'testMT';
+        },
+        formatWeekViewDayHeader: function(date:Date) {
+            return 'MonWH';
+        },
+        formatWeekViewTitle: function(date:Date) {
+            return 'testWT';
+        },
+        formatWeekViewHourColumn: function(date:Date) {
+            return 'testWH';
+        },
+        formatDayViewHourColumn: function(date:Date) {
+            return 'testDH';
+        },
+        formatDayViewTitle: function(date:Date) {
+            return 'testDT';
+        }
+    }
+};
+ 
   
  
  
-  constructor() { }
+  constructor( public afDB: AngularFireDatabase, public generalService: GeneralService) 
+  { 
+    this.visit.id = this.generalService.userId;
+    this.loadEvent();
+  }
 
   ngOnInit() {
   }
@@ -61,8 +100,49 @@ export class HistoryPage implements OnInit {
 
   addEvent()
   {
+    this.afDB.list('History').push(
+      {
+        id : this.visit.id,
+        reason :this.visit.reason,
+        temperature : this.visit.temperature,
+        prescription : this.visit.prescription, 
+        dateOfvisit: this.currentDate.toDateString(),
+        nextVisit : new Date().toDateString(),
+        other : this.fields
+      }
+    )
     this.showHideForm();
   }
+  loadEvent()
+  {
+    this.afDB.list('History').snapshotChanges(['child_added']).subscribe(actions => {
+      actions.forEach(action => {
+        if(this.visit.id == action.payload.exportVal().id)
+        {
+          for(let [key, value] of Object.entries(action.payload.exportVal().other))
+          {
+              this.fields.push(value);
+          }
+          var visitObject = 
+          {
+            id : action.payload.exportVal().id,
+            title :action.payload.exportVal().reason,
+            temperature : action.payload.exportVal().temperature,
+            prescription : action.payload.exportVal().prescription, 
+            startTime: new Date(action.payload.exportVal().dateOfvisit),
+             endTime: new Date(action.payload.exportVal().nextVisit),
+            other : this.fields
+          }
+
+          this.visits.push(visitObject);
+          console.log(action)
+          
+        }
+      });
+    });
+
+  }
+  
   changeMode(mode: string)
   {
     this.mode = mode; 

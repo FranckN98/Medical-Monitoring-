@@ -6,6 +6,10 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 30%;
+
+    margin: auto;
 }
 
 img{

@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 var firebaseConfig = {
   apiKey: "AIzaSyC8yZKvwx4Gn1vwMyoowuRG2eDlc0hE_dE",
@@ -37,6 +38,7 @@ var firebaseConfig = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
+    AngularFireDatabaseModule,
     MatFormFieldModule,IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
   providers: [
     StatusBar,

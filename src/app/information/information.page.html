@@ -2,9 +2,7 @@
 
   <ion-header  *ngIf="edit"  mode="ios">
     <ion-toolbar color="primary">
-      <ion-buttons slot="start" >
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+  
       <ion-title color="light" text-wrap>Update Informations</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -34,7 +32,9 @@
     <div class="border-blue">
       <div class="border-white">
         <div class="img-box">
-          <img src="../../assets/profilExample.jpeg" class="tweet-img" alt="Patient Image">
+          <img *ngIf="!existImage"src="../../assets/profilExample.jpeg"  class="tweet-img" alt="Patient Image">
+
+          <img *ngIf="existImage" [src]="imageProfil"  class="tweet-img" alt="Patient Image">
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
       </ion-avatar>
         <ion-label> 
             <h2><b>Athletic </b></h2>  
-            <p>{{this.patient.athletic}}</p>
+            <p>{{patient.athletic}}</p>
         </ion-label>
     </ion-item>
     <ion-button size="small" fill="clear">
@@ -284,7 +284,6 @@
   <!-- TODO ranger par ordre alphabetique -->
 
 
-
   <ion-item line>
     <ion-label position="floating" lines="none"><b>Name</b></ion-label>
     <ion-input type="text" [(ngModel)]="patient.name" required ></ion-input>
@@ -358,12 +357,13 @@
             <ion-label position="floating" ><b>Add other information</b></ion-label>     
             <ion-button color="secondary" slot="end"  (click)="newFields(label)"  [disabled]="!label"><ion-icon name="add-outline"></ion-icon>Add Field</ion-button>
           
-            <ion-input type="text" placeholder="Label"   [(ngModel)]="label" required></ion-input>
+            <ion-input type="text" placeholder="Label"   [(ngModel)]="label" ></ion-input>
         </ion-item>
     <br>
       
-      <ion-button color="secondary" expand="block" (click)="update()">Update</ion-button>
+      <ion-button type="submit" color="secondary" expand="block" (click)="update()">Update</ion-button>
 
+    
     </div>
  
 </ion-content>

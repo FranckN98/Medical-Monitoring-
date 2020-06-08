@@ -1,21 +1,61 @@
-<ion-header>
+<ion-header *ngIf="partnerSelect">
   <ion-toolbar>
-    <ion-title>chat</ion-title>
+    
+    <ion-button slot="start" color="light" (click)="partnerSelect=false"><ion-icon color="secondary" name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-avatar slot="start">
+      <img src="../../assets/profilDefault.jpg" >
+    </ion-avatar>
+    <ion-title>{{selectedDoctor.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-header *ngIf="!partnerSelect" translucent>
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/"></ion-back-button>
+    <ion-title>Doctors</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
 
-  <div class="stream" >
+  <div class="stream" *ngIf="partnerSelect">
+   
     <ion-item lines="none" *ngFor="let message of messages">
-     <ion-badge text-wrap slot="start" color="light">{{ message.text }}</ion-badge>
-		<ion-badge text-wrap slot="end" color="primary">{{ message.text }}</ion-badge>
+
+        <ion-badge color="success" slot="start" size="7" *ngIf="message.userId == selectedDoctor.doctorId && message.partnerId == userId">
+          <span text-wrap> {{message.text}}</span>
+          <br>
+          <span class="time" text-right>{{message.date | date :'short'}}</span>
+          <br>
+        </ion-badge>
+
+        <ion-badge slot="end" color="primary" size="7" *ngIf="message.userId == userId && message.partnerId == selectedDoctor.doctorId">
+          <span text-wrap> {{message.text}}</span>
+          <br>
+          <span class="time">{{message.date | date :'short'}}</span>
+          <br>
+        </ion-badge>
     </ion-item>
+
+    
+  </div>
+
+  <div *ngIf="!partnerSelect">
+    <ion-item *ngFor="let doctor of doctors" (click)="selectDoctor(doctor)">
+      <ion-avatar slot="start">
+        <img src="../../assets/profilDefault.jpg" >
+      </ion-avatar>
+      <ion-label>
+        <h2>{{doctor.name}}</h2>
+        <p>{{doctor.town}}, Since {{doctor.startDate}} </p>
+      </ion-label>
+    </ion-item>
+
   </div>
 </ion-content>
 
-<ion-footer >
-  <ion-grid>
+
+<ion-footer *ngIf="partnerSelect">
+  <ion-toolbar color="light">
     <ion-row>
       <ion-col size="10" class="input-col">
         <ion-input [(ngModel)]="messageText" type="text" placeholder="Enter your message"></ion-input>
@@ -26,5 +66,5 @@
         </ion-button>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-toolbar>
 </ion-footer>

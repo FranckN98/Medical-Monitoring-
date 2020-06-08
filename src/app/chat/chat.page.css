@@ -28,8 +28,25 @@ ion-input{
     min-height: fit-content !important;
     height: 51px;
 }
-ion-badge {
+ion-badge, ion-item {
     padding: 10px!important;
     text-align: left;
-    max-width: 80%;
+	
+	border-radius: 10px;
+	margin-bottom: 4px;
+	white-space: pre-wrap;
+}
+
+.message{
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 4px;
+	white-space: pre-wrap;
+	
+}
+
+
+
+.time{
+	font-size: 9px;
 }

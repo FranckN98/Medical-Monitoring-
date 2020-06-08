@@ -1,7 +1,8 @@
 import { GeneralService } from './../service/general.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database/';
-import { DataSnapshot } from '@angular/fire/database/interfaces';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-information',
@@ -15,15 +16,41 @@ export class InformationPage implements OnInit {
   label : string; 
   edit : boolean;
   key : any = 0;
-
-  constructor( public generalService: GeneralService, public afDB: AngularFireDatabase)
+  imageProfil : any;
+  existImage : boolean = false; 
+  constructor( public generalService: GeneralService,public afSG : AngularFireStorage, public afDB: AngularFireDatabase)
   { 
     this.patient.id = generalService.userId;
     this.read();
-   
+   this.getImagesDatabase();
   
   }
 
+  getImagesDatabase()
+  {
+    this.afDB.list('Images').snapshotChanges(['child_added']).subscribe(images => {
+      // console.log(images);
+      var defautImage;
+      images.forEach(image => 
+        {
+          if(image.payload.exportVal().id == this.patient.id)
+          {
+            this.getImagesStorage(image); 
+            this.existImage = true; 
+          }
+
+          
+        })
+    });
+  }
+
+  getImagesStorage(image : any)
+  {
+    const imgRef = image.payload.exportVal().ref;
+    this.afSG.ref(imgRef).getDownloadURL().subscribe(imgUrl => {
+      this.imageProfil = imgUrl;
+    });
+  }
   add()
   {
     this.afDB.list('PatientInformation/').push({
@@ -44,7 +71,7 @@ export class InformationPage implements OnInit {
       vaccine : this.patient.vaccine,
       other : this.fields
     })
-    this.edit = false;
+    
   }
   update()
   {
@@ -74,6 +101,8 @@ export class InformationPage implements OnInit {
 
       }) 
     }
+
+    this.edit = false;
      
   }
 
@@ -141,8 +170,7 @@ export class InformationPage implements OnInit {
       
     if (index != -1)
     {
-      console.log(index)
-  
+      console.log(index);
       this.fields.splice(index, 1);
     } 
     else
@@ -156,21 +184,21 @@ export class InformationPage implements OnInit {
 
 class personInfo
 {
-  id : any;
-  name: string ;
-  weight : number;
-  age : number
-  size : number;
-  allergies : string;
-  athletic : string;
-  diseases : string;
-  smoker : string; 
-  bloodgroup : string; 
-  job : string ; 
-  vegetarian : string;
-  ethnie : string; 
-  diabetic : string; 
-  vaccine : string;
-  other : []
+  id : any = "";
+  name: string = "" ;
+  weight : number = 0;
+  age : number = 0;
+  size : number = 0;
+  allergies : string = "";
+  athletic : string ="";
+  diseases : string ="";
+  smoker : string =""; 
+  bloodgroup : string =""; 
+  job : string =""; 
+  vegetarian : string ="";
+  ethnie : string =""; 
+  diabetic : string =""; 
+  vaccine : string ="";
+  other : [] = []
 
 }

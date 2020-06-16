@@ -1,11 +1,12 @@
 import { GeneralService } from './../service/general.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Component, OnInit , ViewChild } from '@angular/core';
-
+import {AlertController, IonicSafeString} from '@ionic/angular'
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { stringify } from 'querystring';
 registerLocaleData(localeFr, 'fr');
 
 @Component({
@@ -29,8 +30,9 @@ export class HistoryPage implements OnInit {
     reason : "",
     temperature : "",
     prescription : "", 
-    dateOfvisit: this.currentDate,
-    nextVisit : new Date(),
+    startTime: new Date().toString(),
+    endTime:new Date().toString(),
+    
     other : this.fields
   }
  
@@ -68,16 +70,41 @@ export class HistoryPage implements OnInit {
   
  
  
-  constructor( public afDB: AngularFireDatabase, public generalService: GeneralService) 
+  constructor(public alertController:AlertController, public afDB: AngularFireDatabase, public generalService: GeneralService) 
   { 
     this.visit.id = this.generalService.userId;
     this.loadEvent();
   }
 
+  async presentAlert() {
+ 
+
+}
+
+async onEventSelected(event: any) 
+{
+
+  var otherText : string | IonicSafeString = '';
+
+  for(var i = 0; i < event.other.length; i++)
+  {
+    otherText += event.other[i].label + ': <b>' + event.other[i].Value + '</b> <br>' ; 
+  }
+  console.log(otherText)
+  const alert = await this.alertController.create({
+    header: event.title,
+  //  subHeader: 'Date of Day :' + event.startTime +' Date of Next Visit : '+event.endTime ,
+    message: 'Temperature : <b>' + event.temperature + '</b><br>Prescription : <b>' + event.prescription + '</b><br>' +otherText,
+    buttons: ['OK'],
+  });
+
+  await alert.present();
+  let result = await alert.onDidDismiss();
+}
+
   ngOnInit() {
   }
-  /*
-  */
+ 
   onViewTitleChanged(title: string)
   {
     this.currentMonth = title; 
@@ -100,44 +127,52 @@ export class HistoryPage implements OnInit {
 
   addEvent()
   {
-    this.afDB.list('History').push(
-      {
+     this.afDB.list('History').push(
+       {
         id : this.visit.id,
-        reason :this.visit.reason,
+        title :this.visit.reason,
         temperature : this.visit.temperature,
         prescription : this.visit.prescription, 
-        dateOfvisit: this.currentDate.toDateString(),
-        nextVisit : new Date().toDateString(),
+        startTime: this.visit.startTime,
+        endTime : this.visit.endTime,
         other : this.fields
-      }
-    )
+       }
+     )
+
+    
     this.showHideForm();
   }
   loadEvent()
   {
     this.afDB.list('History').snapshotChanges(['child_added']).subscribe(actions => {
       actions.forEach(action => {
+
         if(this.visit.id == action.payload.exportVal().id)
         {
-          for(let [key, value] of Object.entries(action.payload.exportVal().other))
+          if(action.payload.exportVal().other != null)
           {
-              this.fields.push(value);
+            for(let [key, value] of Object.entries(action.payload.exportVal().other))
+            {
+                this.fields.push(value);
+              
+            }
           }
           var visitObject = 
           {
             id : action.payload.exportVal().id,
-            title :action.payload.exportVal().reason,
+            title : action.payload.exportVal().title,
             temperature : action.payload.exportVal().temperature,
             prescription : action.payload.exportVal().prescription, 
-            startTime: new Date(action.payload.exportVal().dateOfvisit),
-             endTime: new Date(action.payload.exportVal().nextVisit),
+            startTime: new Date(action.payload.exportVal().startTime),
+             endTime: new Date(action.payload.exportVal().endTime),
             other : this.fields
           }
 
           this.visits.push(visitObject);
-          console.log(action)
-          
+           this.fields = [];
+          console.log(visitObject)
         }
+        this.myCalendar.loadEvents();
       });
     });
 

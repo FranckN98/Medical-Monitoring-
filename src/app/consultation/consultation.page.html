@@ -1,20 +1,43 @@
-
-<ion-content padding>
-  <div class="header">
+<ion-header>
+  <ion-toolbar >
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <h2 text-wrap>Consultation</h2>
-  </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="changeStep()" >
-    <ion-fab-button>
-      <ion-icon *ngIf="step1 || step2" name="arrow-forward-outline"></ion-icon>
-      <ion-icon *ngIf="step3" name="checkmark-done-outline"></ion-icon>
+    <ion-title>
+      <h2 text-wrap>Consultation</h2>
+    </ion-title>
+    
+  </ion-toolbar>
+  
+</ion-header>
+<ion-content padding>
+  <!-- <div class="header">
+    <h2 text-wrap></h2>
+    <h2 text-wrap></h2>
+    
+  </div> -->
+  <!-- <div class="flex">
+    <div class="border-blue">
+      <div class="border-white">
+        <div class="img-box">
+          <img *ngIf="!existImage"src="../../assets/consultant.png"  class="tweet-img" alt="Patient Image">
+
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <ion-fab vertical="bottom"  horizontal="end" slot="fixed" (click)="changeStep()" >
+    <ion-fab-button color="light" *ngIf="step1 || step2">
+      <ion-icon  name="arrow-forward-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="success" *ngIf="step3">
+      <ion-icon  name="checkmark-done-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-fab vertical="bottom" horizontal="Start" slot="fixed" (click)=" backStep()">
-    <ion-fab-button >
+    <ion-fab-button color="light">
       <ion-icon   name="arrow-back-outline"></ion-icon>
       
     </ion-fab-button>
@@ -65,14 +88,14 @@
       <ion-row>
         <ion-col>
           <div class="imageItem">
-            <div class="image"><img src="../../assets/consultation/fatigue.jpg" alt=""></div>
-            <div class="text"> <ion-checkbox color="secondary"  slot="start" mode="md"></ion-checkbox>&nbsp;Tiredness</div>
+            <div ><img class="image"src="../../assets/consultation/fatigue.jpg" alt=""></div>
+            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Tiredness</div>
           </div>
         </ion-col>
         <ion-col>    
           <div class="imageItem">
-            <div class="image"><img src="../../assets/rhume.JPG" alt=""></div>
-            <div class="text"> <ion-checkbox color="secondary"  slot="start" mode="md"></ion-checkbox>Cold</div>
+            <div ><img class="image"src="../../assets/rhume.JPG" alt=""></div>
+            <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>Cold</div>
           </div>
         </ion-col>
       </ion-row>
@@ -81,14 +104,14 @@
         <ion-col>
          
           <div class="imageItem">
-            <div class="image"><img src="../../assets/consultation/toux.jpg" alt=""></div>
-            <div class="text"> <ion-checkbox color="secondary"  slot="start" mode="md"></ion-checkbox>&nbsp;Cough</div>
+            <div><img class="image"src="../../assets/consultation/toux.jpg" alt=""></div>
+            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Cough</div>
           </div>
         </ion-col>
         <ion-col>
           <div class="imageItem">
-            <div class="image"><img src="../../assets/vertige.JPG" alt=""></div>
-            <div class="text"> <ion-checkbox color="secondary"  slot="start" mode="md"></ion-checkbox>&nbsp;Dizziness</div>
+            <div ><img class="image" src="../../assets/vertige.JPG" alt=""></div>
+            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Dizziness</div>
           </div>
         </ion-col>
       </ion-row>
@@ -96,14 +119,14 @@
       <ion-row>
         <ion-col>
           <div class="imageItem">
-            <div class="image"><img src="../../assets/insomnie.JPG" alt=""></div>
-            <div class="text"> <ion-checkbox color="secondary"  slot="start" mode="md"></ion-checkbox>&nbsp;Insomnia</div>
+            <div ><img src="../../assets/insomnie.JPG" class="image" alt=""></div>
+            <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>&nbsp;Insomnia</div>
           </div>
         </ion-col>
         <ion-col>
           <div class="imageItem">
-            <div class="image"><img src="../../assets/consultation/vomissement.jpg" alt=""></div>
-            <div class="text"> <ion-checkbox color="secondary"  slot="start" mode="md"></ion-checkbox>&nbsp;Vomiting</div>
+            <div ><img class="image" src="../../assets/consultation/vomissement.jpg" alt=""></div>
+            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Vomiting</div>
           </div>
         </ion-col>
       </ion-row>
@@ -112,13 +135,13 @@
 
       <ion-row>
         <ion-col>
+          <div class="imageItem padding">
+            <ion-item >
+              
+              <ion-textarea clear-on-edit="true" placeholder="Please other Symptome here"></ion-textarea>
+            </ion-item>
+          </div>
           
-          <ion-item color="tertiairy">
-            <ion-label position="stacked">Fixed Label</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-
-
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -48,11 +48,11 @@
 
      <ion-item>
         <ion-label position="floating" lines="none"><b>Date of Visit</b></ion-label>
-        <ion-datetime displayFormat="D MMM YYYY H:mm" pickerFormat="MMM D HH:mm" min="2019" [(ngModel)]="visit.dateOfvisit" required></ion-datetime>
+        <ion-datetime displayFormat="D MMM YYYY H:mm" pickerFormat="MMM D HH:mm" min="2019" [(ngModel)]="visit.startTime" required></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label position="floating" lines="none"><b>Next visit at:</b></ion-label>
-        <ion-datetime displayFormat="D MMM YYYY H:mm" pickerFormat="MMM D HH:mm" min="2019" required [(ngModel)]="visit.nextVisit" ></ion-datetime>
+        <ion-datetime displayFormat="D MMM YYYY H:mm" pickerFormat="MMM D HH:mm" min="2019" required [(ngModel)]="visit.endTime" ></ion-datetime>
       </ion-item>
 
       
@@ -73,7 +73,7 @@
         </ion-item>
     <br>
       
-      <ion-button color="secondary" expand="block" (click)="addEvent()">Add</ion-button>
+      <ion-button color="secondary" expand="block" (click)="addEvent()">Add New Visit</ion-button>
 
     </div>
 
@@ -84,7 +84,7 @@
       locale="en-GB"
       [eventSource]="visits"
       [calendarMode] = "mode"
-      startHour="09"
+      startHour="00"
       endHour="23"
       step="90"
       startingDayWeek="1"

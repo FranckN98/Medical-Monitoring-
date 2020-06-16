@@ -24,3 +24,49 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.monthview-primary-with-event, .weekview-with-event { background-color:  rgb(73, 182, 120) !important; }
+.weekview-selected, .monthview-selected { background-color:#e24848 !important; }
+.monthview-secondary-with-event{
+    background-color: rosybrown;
+}
+
+  
+ .dayview-allday-label, .dayview-with-event, .week-view-current
+ {
+     background-color: seagreen;
+ }
+
+.monthview-datetable 
+{
+   
+    
+    th
+    {  
+        background-color: 	#5bc0de!important;
+        color: seashell;
+    }
+    td{
+        
+    }
+}
+
+.calendar-day 
+{
+
+    
+    &.primary {
+   
+    }
+    
+    &.success {
+    
+    }
+    
+    &.warning {
+    
+    }
+    
+    &.danger {
+   
+    }
+}

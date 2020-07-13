@@ -22,6 +22,7 @@ export class ChatPage implements OnInit {
   };
   messageText : any; 
   userId  ;
+  
   constructor(public afDB: AngularFireDatabase,public afAuth: AngularFireAuth, public generalService: GeneralService) { 
 
     this.userId = this.generalService.userId;

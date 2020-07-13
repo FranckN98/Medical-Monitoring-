@@ -69,7 +69,8 @@ export class InformationPage implements OnInit {
       ethnies : this.patient.ethnie,
       diabetic : this.patient.diabetic, 
       vaccine : this.patient.vaccine,
-      other : this.fields
+      other : this.fields,
+      gender : this.patient.gender
     })
     
   }
@@ -97,7 +98,8 @@ export class InformationPage implements OnInit {
         ethnies : this.patient.ethnie,
         diabetic : this.patient.diabetic, 
         vaccine : this.patient.vaccine,
-        other : this.fields
+        other : this.fields,
+        gender : this.patient.gender
 
       }) 
     }
@@ -121,7 +123,7 @@ export class InformationPage implements OnInit {
         this.fields = [] ;
         actions.forEach(action => {
          
-       
+          console.log(action)
           if(action.payload.exportVal().id == this.patient.id)
           {
            this.key = action.key; 
@@ -140,11 +142,15 @@ export class InformationPage implements OnInit {
             this.patient.vaccine = action.payload.exportVal().vaccine; 
             this.patient.weight = action.payload.exportVal().weight; 
             this.patient.ethnie = action.payload.exportVal().ethnies; 
-        
-            for(let [key, value] of Object.entries(action.payload.exportVal().other))
+            this.patient.gender = action.payload.exportVal().gender;
+
+            if(action.payload.exportVal().other != undefined)
             {
-              this.fields.push(value)
-            }
+                for(let [key, value] of Object.entries(action.payload.exportVal().other))
+                {
+                  this.fields.push(value)
+                }
+            }  
             
             
           }
@@ -186,6 +192,7 @@ class personInfo
 {
   id : any = "";
   name: string = "" ;
+  gender: string = "";
   weight : number = 0;
   age : number = 0;
   size : number = 0;

@@ -12,27 +12,30 @@
 <ion-content [fullscreen]="true" padding>
 
 
-  <div id="container">
-    <strong>Ready to use your app?</strong>
+  <div id="container" *ngIf="!search">
+
+    <form action="">
+
+      <strong>Ready to use your app?</strong>
      
     <ion-item id="rounded" *ngIf="logInwithId">
       <ion-label position="floating">Patient Id</ion-label>
-      <ion-input></ion-input>
+      <ion-input type="text" [(ngModel)]="patientId" required></ion-input>
     </ion-item>
 
     <ion-item  id="rounded" *ngIf="!logInwithId">
 
       <ion-label position="floating">Name</ion-label>
-      <ion-input></ion-input>
+      <ion-input type="text" [(ngModel)]="patientName" required></ion-input>
     </ion-item>
 
     <ion-item id="rounded"  *ngIf="!logInwithId">
       <ion-label>Birthday</ion-label>
-      <ion-datetime  placeholder="Select Date"></ion-datetime>
+      <ion-datetime  [(ngModel)]="patientBirthDay" required></ion-datetime>
     </ion-item>
 
     <section>
-      <ion-button expand="block">Find a Patient &nbsp;<ion-icon name="person"></ion-icon></ion-button>
+      <ion-button expand="block" type="submit" (click)="getPatient()">Find a Patient &nbsp;<ion-icon name="person"></ion-icon></ion-button>
     </section>
     <br>
     <section>
@@ -42,5 +45,11 @@
 
       </ion-button>
     </section>
+    </form>
+    
+  </div>
+
+  <div *ngIf="search">
+
   </div>
 </ion-content>

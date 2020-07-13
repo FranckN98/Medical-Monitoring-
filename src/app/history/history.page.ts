@@ -141,6 +141,7 @@ async onEventSelected(event: any)
 
     
     this.showHideForm();
+
   }
   loadEvent()
   {

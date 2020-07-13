@@ -41,6 +41,28 @@
   </div>
   <ion-card>
     <ion-item lines="none" class="info">
+      <ion-avatar slot="start">
+        <img src="../../assets/gender.png">
+      </ion-avatar>
+        <ion-label> 
+            <h2><b>Gender</b></h2>  
+            <p *ngIf="patient.gender=='male'"><ion-icon name="man-outline"></ion-icon><ion-icon name="male-outline"></ion-icon></p>
+            <p *ngIf="patient.gender=='female'"><ion-icon name="woman-outline"></ion-icon><ion-icon name="female-outline"></ion-icon></p>
+            <p *ngIf="patient.gender=='other'"><ion-icon name="male-female-outline"></ion-icon></p>
+
+        </ion-label>
+    </ion-item>
+    <ion-button size="small" fill="clear">
+      <ion-icon name="ellipsis-vertical-outline"></ion-icon> More
+    </ion-button>
+    <ion-button size="small" fill="clear">
+      <ion-icon slot="start" name="repeat"></ion-icon> Update
+    </ion-button>
+  </ion-card>
+
+  <ion-card>
+    
+    <ion-item lines="none" class="info">
 
       <ion-avatar slot="start">
         <img src="../../assets/size.jpg">
@@ -57,6 +79,7 @@
       <ion-icon slot="start" name="repeat"></ion-icon> Update
     </ion-button>
   </ion-card>
+  
   
   <ion-card >
     <ion-item lines="none" class="info">
@@ -291,6 +314,14 @@
       <ion-item line>
         <ion-label position="floating" lines="none"><b>Age</b></ion-label>
         <ion-input type="number" [(ngModel)]="patient.age" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" lines="none"><b>Gender</b></ion-label>
+        <ion-select placeholder="Choose" multiple="false" [(ngModel)]="patient.gender" >
+          <ion-select-option value="female" [value]="patient.gender">Female</ion-select-option>
+          <ion-select-option value="male" [value]="patient.gender">Male</ion-select-option>
+          <ion-select-option value="other"[value]="patient.gender">Other</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item line>
         <ion-label position="floating" lines="none"><b>Weight</b></ion-label>

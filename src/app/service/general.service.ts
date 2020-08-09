@@ -53,10 +53,11 @@ export class GeneralService {
     this.afAuth.signInWithEmailAndPassword(email,password)
     .then(value => {
       
-      if(this.doctor)
+      if(this.doctor == true)
       {
-        this.navCtrl.navigateRoot('/home');
+        this.navCtrl.navigateRoot('/search');
         this.connected = true;
+        console.log("Alles gut");
       }
       else
       {

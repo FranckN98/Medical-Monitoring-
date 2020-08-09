@@ -1,14 +1,15 @@
+import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { GeneralService } from './../service/general.service';
-import { Component } from '@angular/core';
+
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-search-patient',
+  templateUrl: './search-patient.page.html',
+  styleUrls: ['./search-patient.page.scss'],
 })
-export class HomePage 
-{
+export class SearchPatientPage implements OnInit {
+
   logInwithId:boolean = true; 
   patients = []; 
   patientId : string; 
@@ -23,7 +24,7 @@ export class HomePage
     
   }
 
-  getPatient()
+  getPatient(patientUniqueId:String)
   {
     this.patientId = this.patientId.trim(); 
     
@@ -38,9 +39,9 @@ export class HomePage
 
           actions.forEach(action =>
             {
-              if(action.payload.exportVal().id == this.patientId)
+              if(action.payload.exportVal().id == patientUniqueId)
               {
-                this.generalService.userId = this.patientId;
+                this.generalService.userId = patientUniqueId;
               }
           })
         }
@@ -64,6 +65,10 @@ export class HomePage
     }
     this.search = !this.search;
     console.log(this.generalService.userId)
+  }
+
+
+  ngOnInit() {
   }
 
 }

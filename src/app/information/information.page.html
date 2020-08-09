@@ -46,9 +46,9 @@
       </ion-avatar>
         <ion-label> 
             <h2><b>Gender</b></h2>  
-            <p *ngIf="patient.gender=='male'"><ion-icon name="man-outline"></ion-icon><ion-icon name="male-outline"></ion-icon></p>
-            <p *ngIf="patient.gender=='female'"><ion-icon name="woman-outline"></ion-icon><ion-icon name="female-outline"></ion-icon></p>
-            <p *ngIf="patient.gender=='other'"><ion-icon name="male-female-outline"></ion-icon></p>
+            <p *ngIf="patient.gender=='male' || patient.gender=='Male'  "><ion-icon name="man-outline"></ion-icon><ion-icon name="male-outline"></ion-icon></p>
+            <p *ngIf="patient.gender=='female' || patient.gender=='Female'"><ion-icon name="woman-outline"></ion-icon><ion-icon name="female-outline"></ion-icon></p>
+            <p *ngIf="patient.gender=='other' || patient.gender=='Other' "><ion-icon name="male-female-outline"></ion-icon></p>
 
         </ion-label>
     </ion-item>

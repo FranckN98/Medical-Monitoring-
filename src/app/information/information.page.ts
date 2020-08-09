@@ -193,9 +193,9 @@ class personInfo
   id : any = "";
   name: string = "" ;
   gender: string = "";
-  weight : number = 0;
-  age : number = 0;
-  size : number = 0;
+  weight : string = "";
+  age : string = "";
+  size : string = "";
   allergies : string = "";
   athletic : string ="";
   diseases : string ="";

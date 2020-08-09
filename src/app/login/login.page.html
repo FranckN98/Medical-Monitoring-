@@ -47,27 +47,27 @@
     <br>
     <ion-item >
       <ion-label  position="floating"><b>Name</b><ion-text color="danger">*</ion-text></ion-label>
-      <ion-input type="text" [(ngModel)]="person.name" required></ion-input>
+      <ion-input type="text" [(ngModel)]="name" required></ion-input>
     </ion-item>
     
     <ion-item >
       <ion-label position="floating" ><b>Vorname</b><ion-text color="danger">*</ion-text></ion-label>
-      <ion-input  type="text" [(ngModel)]="person.vorname" required ></ion-input>
+      <ion-input  type="text" [(ngModel)]="vorname" required ></ion-input>
     </ion-item> 
 
     <ion-item>
       <ion-label   position="floating" ><b>Geboren am </b><ion-text color="danger">*</ion-text></ion-label>
-      <ion-datetime   [(ngModel)]="person.geburtstag" doneText="OK" cancelText="Abbrechen" max="2005" min="1950" class="datetime-placeholder" displayFormat="DDD. MMM DD, YYYY" ></ion-datetime>
+      <ion-datetime   [(ngModel)]="geburtstag" doneText="OK" cancelText="Abbrechen" max="2005" min="1950" class="datetime-placeholder" displayFormat="DDD. MMM DD, YYYY" ></ion-datetime>
     </ion-item>
 
     <ion-item >
       <ion-label position="floating" ><b>Email </b><ion-text color="danger">*</ion-text></ion-label>
-      <ion-input   type="mail" position="floating" [(ngModel)]="person.email" required ></ion-input>
+      <ion-input   type="mail" position="floating" [(ngModel)]="email" required ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating"><b>Passwort </b><ion-text color="danger">*</ion-text></ion-label>
-      <ion-input type="password" [(ngModel)]="person.passwort" required></ion-input>
+      <ion-input type="password" [(ngModel)]="passwort" required></ion-input>
     </ion-item>
     
     <ion-item>
@@ -90,13 +90,10 @@
        <ion-text color="danger" text-center>Du solltest mit unseren Geschäftsbedingungen einverstanden sein, um dich bei uns registrieren zu können</ion-text>
     </ion-item>
 
-    <ion-item *ngIf="emailAlreadyUsed">
-      <br>
-       <ion-text color="danger" text-center>Email Adresse bereits vergeben! Klicke auf Anmelden wenn du bei uns schon registriert bist</ion-text>
-    </ion-item>
+    
 
     <br>
-    <ion-button type="submit" shape="round"  expand="block" >Fortfahren </ion-button>
+    <ion-button type="submit" shape="round"  expand="block" (click)="registring(email, passwort)" >Fortfahren </ion-button>
 
     <ion-item lines="none">
       <ion-label>Schon registriert? </ion-label>

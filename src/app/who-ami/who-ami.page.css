@@ -2,14 +2,16 @@ p{
     text-align: center;
 }
 
-.ion-content{
-    display: flex;
+.ion-content
+{
+    
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 30%;
-
-    margin: auto;
+    margin-left:  auto;
+    margin-right:  auto;
+    width: 380px;
 }
 
 img{

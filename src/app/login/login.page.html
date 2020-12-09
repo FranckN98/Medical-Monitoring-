@@ -3,12 +3,13 @@
      <ion-buttons slot="start">
         <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
-    <ion-title>login</ion-title>
+    <ion-title *ngIf="!registration">Login</ion-title>
+    <ion-title *ngIf="registration">Registration</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1 *ngIf="connected" >Connected!!</h1>
+ 
 
   <div class="padding" *ngIf="!registration">
 
@@ -44,61 +45,61 @@
 
 
   <div class="padding" *ngIf="registration">
-    <br>
+  
     <ion-item >
-      <ion-label  position="floating"><b>Name</b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-label  position="floating"> Name <ion-text color="danger">*</ion-text></ion-label>
       <ion-input type="text" [(ngModel)]="name" required></ion-input>
     </ion-item>
     
     <ion-item >
-      <ion-label position="floating" ><b>Vorname</b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating" > Vorname <ion-text color="danger">*</ion-text></ion-label>
       <ion-input  type="text" [(ngModel)]="vorname" required ></ion-input>
     </ion-item> 
 
     <ion-item>
-      <ion-label   position="floating" ><b>Geboren am </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-label   position="floating" > Geboren am <ion-text color="danger">*</ion-text></ion-label>
       <ion-datetime   [(ngModel)]="geburtstag" doneText="OK" cancelText="Abbrechen" max="2005" min="1950" class="datetime-placeholder" displayFormat="DDD. MMM DD, YYYY" ></ion-datetime>
     </ion-item>
 
     <ion-item >
-      <ion-label position="floating" ><b>Email </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating" > Email <ion-text color="danger">*</ion-text></ion-label>
       <ion-input   type="mail" position="floating" [(ngModel)]="email" required ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating"><b>Passwort </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-label position="floating"> Passwort <ion-text color="danger">*</ion-text></ion-label>
       <ion-input type="password" [(ngModel)]="passwort" required></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-label  position="floating"><b>Passwort wiederholen </b><ion-text color="danger">*</ion-text></ion-label>
+      <ion-label  position="floating"> Passwort wiederholen <ion-text color="danger">*</ion-text></ion-label>
       <ion-input type="password" [(ngModel)]="cpassword" required="true" ></ion-input>
     </ion-item>
     <br>
 
     <ion-item lines="none">
-      <ion-checkbox color="success" [(ngModel)]="conditionAccepted" required> </ion-checkbox>
-      <ion-text color="primary" >  Ich akzeptiere die Geschäftsbedingungen und die Datenschutzerklärung  </ion-text>
+      <ion-checkbox color="primary" [(ngModel)]="conditionAccepted" slot="start"> </ion-checkbox>
+      <ion-text color="primary" >  Ich akzeptiere die Geschäftsbedingungen </ion-text>
     </ion-item>
 
     <ion-item *ngIf="passwordDifferent">
       <br>
        <ion-text color="danger" text-center>Passwort verschieden! Bitte überprüfe dein Passwort erneut</ion-text>
     </ion-item>
-    <ion-item *ngIf="conditionAccepted">
+    <ion-item *ngIf="!conditionAccepted && wantToSignUp">
       <br>
        <ion-text color="danger" text-center>Du solltest mit unseren Geschäftsbedingungen einverstanden sein, um dich bei uns registrieren zu können</ion-text>
     </ion-item>
 
-    
-
-    <br>
-    <ion-button type="submit" shape="round"  expand="block" (click)="registring(email, passwort)" >Fortfahren </ion-button>
-
     <ion-item lines="none">
-      <ion-label>Schon registriert? </ion-label>
-      <ion-button slot="end" fill="clear" (click)="registration=false">Anmelden</ion-button>
+      <ion-label slot="start" fill="clear" > <ion-text color="danger">*</ion-text>  Pflichtfelder </ion-label>
     </ion-item>
+
+
+    <ion-button type="submit"   expand="block" (click)="registring(email, passwort); wantToSignUp=true" >Registrieren </ion-button>
+  
+    <br>
+    <ion-button type="submit" fill="outline" expand="block" (click)="registration = false"><b>Anmelden</b></ion-button>
    
   </div>
 

@@ -30,6 +30,7 @@
     "core-js": "^2.5.4",
     "firebase": "^7.14.3",
     "hammerjs": "^2.0.8",
+    "ionic": "^5.4.16",
     "ionic2-calendar": "^0.5.7",
     "ionicons": "^5.0.1",
     "rxjs": "~6.5.1",

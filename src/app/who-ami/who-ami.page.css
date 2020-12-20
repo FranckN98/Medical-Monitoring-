@@ -2,12 +2,16 @@ p{
     text-align: center;
 }
 
+/* changed Text size dynamically due to screen size */
+.top-line{
+    font-size: 3vmax;
+}
+
+/* changed content to be displayed at the center of the screen */
 .ion-content
 {
-    
     justify-content: center;
     align-items: center;
-    position: absolute;
     top: 30%;
     margin-left:  auto;
     margin-right:  auto;

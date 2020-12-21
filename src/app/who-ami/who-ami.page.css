@@ -21,4 +21,8 @@ p{
 img{
     height: 160px;
     width: 160px;
+    border-bottom: 1px solid black;
+}
+ion-card{
+    border: 1px solid black;
 }

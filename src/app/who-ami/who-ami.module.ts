@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { WhoAmiPageRoutingModule } from './who-ami-routing.module';
 
 import { WhoAmiPage } from './who-ami.page';
+import { ThemeService } from '../service/theme.service';
 
 @NgModule({
   imports: [
@@ -17,4 +18,11 @@ import { WhoAmiPage } from './who-ami.page';
   ],
   declarations: [WhoAmiPage]
 })
-export class WhoAmiPageModule {}
+export class WhoAmiPageModule {
+  constructor(private themeService: ThemeService){
+
+  }
+  themeToggle(){
+    this.themeService.setToggle();
+  }
+}

@@ -1,6 +1,7 @@
 import { GeneralService } from './../service/general.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { IonMenuToggle, IonToggle, NavController } from '@ionic/angular';
+import { ToggleType } from '@angular/material';
 
 @Component({
   selector: 'app-who-ami',
@@ -8,7 +9,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./who-ami.page.css'],
 })
 export class WhoAmiPage implements OnInit {
-
+  darkmode = false;
   constructor(public generalService:GeneralService, public navCtrl:NavController) { }
 
   ngOnInit() {
@@ -19,5 +20,4 @@ export class WhoAmiPage implements OnInit {
     this.generalService.selectUserType(i);
     this.navCtrl.navigateRoot('/login');
   }
-
-}
+};

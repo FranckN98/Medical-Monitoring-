@@ -13,7 +13,8 @@ import { ChatPage } from './chat.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChatPageRoutingModule
+    ChatPageRoutingModule,
+    
   ],
   declarations: [ChatPage]
 })

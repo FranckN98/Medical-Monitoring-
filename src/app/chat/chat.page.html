@@ -16,7 +16,7 @@
 </ion-header>
 
 <ion-content >
-  <ion-searchbar type="text" placeholder="Search Message"></ion-searchbar>
+  <ion-searchbar type="text" placeholder="Search Message" *ngIf="!partnerSelect"></ion-searchbar>
   <div class="stream" *ngIf="partnerSelect">
     <ion-item lines="none" *ngFor="let message of messages">
         <ion-badge color="success" slot="start" size="7" *ngIf="message.userId == selectedDoctor.doctorId && message.partnerId == userId">

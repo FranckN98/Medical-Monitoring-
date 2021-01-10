@@ -16,6 +16,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
+
+
 var firebaseConfig = {
   apiKey: "AIzaSyC8yZKvwx4Gn1vwMyoowuRG2eDlc0hE_dE",
   authDomain: "medical-monitoring-e4482.firebaseapp.com",

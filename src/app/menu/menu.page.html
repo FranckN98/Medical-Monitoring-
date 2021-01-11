@@ -7,24 +7,32 @@
       Menu
     </ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-menu-button auto-hide="false" menu="main-menu"></ion-menu-button>
   </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-button id="changeText" routerLink="/">
-        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      <ion-button id="changeText" >
+        <ion-icon name="notifications"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
+<ion-content Scrollable>
  
   <div  id="container">
 
 
     <ion-grid>
-      <h3>Patient data</h3>
+      <h3>Dashboard</h3>
+      <ion-row>
+        <app-accordian title="Tipp of the Day" accordionExapanded="true" >
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed velit iure,
+            ea officia numquam provident suscipit, 
+          </p>
+        </app-accordian>
+      </ion-row>
       <ion-row>
         <ion-col>
           <ion-card button="true" class="card1" type="button" routerLink="/info"  >

@@ -11,7 +11,11 @@ const routes: Routes = [
   { path: 'who', loadChildren: () => import('./who-ami/who-ami.module').then( m => m.WhoAmiPageModule)},
   { path: 'login',loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule) },
   { path: 'chat',  loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)},
-  {  path: 'search',loadChildren: () => import('./search-patient/search-patient.module').then( m => m.SearchPatientPageModule)},
+  {  path: 'search',loadChildren: () => import('./search-patient/search-patient.module').then( m => m.SearchPatientPageModule)},  {
+    path: 'accordion',
+    loadChildren: () => import('./accordion/accordion.module').then( m => m.AccordionPageModule)
+  },
+
 
  
 ];

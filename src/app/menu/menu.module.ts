@@ -9,6 +9,9 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 
 import { MenuPage } from './menu.page';
 
+import { AccordianModule} from '../accordian/accordian.module';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +20,9 @@ import { MenuPage } from './menu.page';
     MatRippleModule,
     MatInputModule,
     MatFormFieldModule,
-    MenuPageRoutingModule
+    MenuPageRoutingModule,
+    AccordianModule
+
   ],
   declarations: [MenuPage]
 })

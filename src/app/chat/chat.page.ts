@@ -70,7 +70,6 @@ export class ChatPage implements OnInit {
     this.partnerSelect = true; 
     this.selectedDoctor = doctor;
 
-    console.log(doctor)
   }
 
   getDoctors()

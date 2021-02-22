@@ -1,3 +1,43 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu menuId="main-menu" contentId="main">
+    <ion-content>
+      <div class="menu-header-bg">
+
+      </div>
+      <div class="header-content">
+        <ion-icon class="medikt" name="medkit"></ion-icon>
+        <ion-label>
+          <h2>H. Franck Ngami</h2>
+          <p>Bingen am rhein</p>
+        </ion-label>
+      </div>
+      <div class="action-button">
+        <ion-button>
+          <ion-icon slot="start" name="person-add"></ion-icon> Doctor Hinzufügen
+        </ion-button>
+      </div>
+      <ion-list lines="none" class="menu-items">
+        <ion-item>
+          <ion-icon slot="start" name="moon"></ion-icon>
+          <ion-label>
+            Dark Mode
+          </ion-label>
+          <ion-toggle slot="end" (click)="themeToggle()"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon> Chat Parameter
+        </ion-item>
+        <ion-item>
+          <ion-icon name="browsers-outline"></ion-icon> Datei Hochladen
+        </ion-item>
+        <ion-item>
+          <ion-icon name="cash"></ion-icon> Zahlungsmethode
+        </ion-item>
+        <ion-item routerLink="/">
+          <ion-icon name="exit-outline"></ion-icon> Ausloggen
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

@@ -11,8 +11,8 @@ export class LoginPage implements OnInit {
 
   doctor: boolean;
   connected : boolean;
-  email : string
-  password : string
+  email : string = "ufrank238@yahoo.fr"
+  password : string = "start123"
   passwordDifferent : string
   registration:boolean
   conditionAccepted:boolean

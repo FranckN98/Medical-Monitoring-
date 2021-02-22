@@ -1,7 +1,7 @@
 .header
 {
     background-color: #2196F3;
-    height:180px;
+    height:120px;
     padding: 1px;
 }
 .tabs
@@ -62,7 +62,7 @@
 {
     display: flex;
     justify-content: center;
-    margin-top: -76px;
+    margin-top: -80px;
 }
 .item-avatar img
  {     

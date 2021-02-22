@@ -3,9 +3,14 @@ p
     text-align: center;
 }
 
+/* changed Text size dynamically due to screen size */
+.top-line{
+    font-size: 3vmax;
+}
+
+/* changed content to be displayed at the center of the screen */
 .ion-content
 {
-    
     justify-content: center;
     align-items: center;
     top: 30%;
@@ -18,4 +23,8 @@ img
 {
     height: 160px;
     width: 160px;
+    border-bottom: 1px solid black;
+}
+ion-card{
+    border: 1px solid black;
 }

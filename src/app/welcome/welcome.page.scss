@@ -1,0 +1,52 @@
+
+::ng-deep .mat-vertical-content {
+    padding: 0;
+}
+
+::ng-deep .mat-step-label {
+
+    font-weight: bold;
+    background-color:#7590d6;
+    padding: 6px 20px;
+    border-radius: 16px;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+    background-color:#7590d6;
+ 
+    font-weight: bold;
+}
+
+::ng-deep .mat-stepper-vertical-line::before {
+    border-color: #7590d6;
+}
+
+.wave-container {
+    margin-top: 10px;
+    position: relative;
+    color: #FFF;
+    text-align: center;
+
+}
+
+
+
+
+ion-title {
+    font-size: 12px;
+    --background: #7590d6;
+  }
+  ion-toolbar {
+    color: white;
+    --background: #7590d6;
+    
+  }
+  ion-footer{
+    --background: white;
+    margin: 0;
+    padding: 0;
+  }
+  ion-footer > svg {
+    display: block;
+  }
+  

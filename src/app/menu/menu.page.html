@@ -7,30 +7,38 @@
       Menu
     </ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-menu-button auto-hide="false" menu="main-menu"></ion-menu-button>
   </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-button id="changeText" routerLink="/">
-        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      <ion-button id="changeText" >
+        <ion-icon name="notifications"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
+<ion-content Scrollable>
  
   <div  id="container">
 
 
-    <ion-grid>
-      <h3>Patient data</h3>
+    <ion-grid mode="md">
+      <h3>Hello Franck!</h3>
+      <ion-row>
+        <app-accordian title="Allgemeine Gesundheitsinfo" accordionExapanded="false" >
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed velit iure,
+            ea officia numquam provident suscipit, 
+          </p>
+        </app-accordian>
+      </ion-row>
       <ion-row>
         <ion-col>
           <ion-card button="true" class="card1" type="button" routerLink="/info"  >
          
               <h1 orange><ion-icon name="body-sharp"></ion-icon></h1>
-              <p>Globale  Informationen</p>
+              <p> Medizinische Patientendaten</p>
               <ion-ripple-effect></ion-ripple-effect>
            
           </ion-card>
@@ -55,7 +63,7 @@
         <ion-col>
           <ion-card button="true" type="button"  class="card4" routerLink="/consult">
             <h1 orange><ion-icon name="git-network"></ion-icon></h1>
-            <p>Online Konsultation</p>
+            <p>Automatisierte Behandlung</p>
             <ion-ripple-effect></ion-ripple-effect>
           </ion-card>
         </ion-col>
@@ -67,3 +75,12 @@
   
 </ion-content>
 
+
+<ion-footer>
+  <ion-toolbar class="ion-toolbar" >
+    <ion-title class="ion-title">
+      <span class="ion-float-left">Doctorchat</span> 
+      <span class="ion-float-right">Bleib zu Hause bleib gesund</span> 
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

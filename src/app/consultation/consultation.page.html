@@ -1,150 +1,200 @@
-
-  <ion-toolbar class="flex" >
+<ion-header [translucent]="true">
+  <ion-toolbar >
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title >
-      <h2 text-wrap>Consultation</h2>
+    <ion-title>
+      Consultation
     </ion-title>
-    
+    <ion-buttons slot="end">
+     <ion-icon slot="start" name="grid-outline"></ion-icon>
+    </ion-buttons>  
   </ion-toolbar>
+  <ion-segment  mode="ios" [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event,i)">
+    <ion-segment-button [value]="item" *ngFor="let item of segmentList;let i = index"
+      (click)="_segmentSelected(item,i)">
+      <ion-label>{{item}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content [fullscreen]="true">
 
-<ion-content padding>
-  <!-- <div class="header">
-    <h2 text-wrap></h2>
-    <h2 text-wrap></h2>
+  
+
+  <ion-slides [options]="options" #slide (ionSlideDidChange)="_ionSlideDidChange($event)">
     
-  </div> -->
-  <!-- <div class="flex">
-    <div class="border-blue">
-      <div class="border-white">
-        <div class="img-box">
-          <img *ngIf="!existImage"src="../../assets/consultant.png"  class="tweet-img" alt="Patient Image">
-
-          
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <ion-fab vertical="bottom"  horizontal="end" slot="fixed" (click)="changeStep()" >
-    <ion-fab-button color="light" *ngIf="step1 || step2">
-      <ion-icon  name="arrow-forward-outline"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="success" *ngIf="step3">
-      <ion-icon  name="checkmark-done-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-  <ion-fab vertical="bottom" horizontal="Start" slot="fixed" (click)=" backStep()">
-    <ion-fab-button color="light">
-      <ion-icon   name="arrow-back-outline"></ion-icon>
+    <ion-slide>
       
-    </ion-fab-button>
-  </ion-fab>
-
-   <div class="content" *ngIf="step1">
-    <ion-list mode="ios" lines="none">
-      <ion-item>
-        <ion-label mode="ios">Where have hurt?</ion-label>
-        <ion-select mode="ios" value="brown" okText="Okay" cancelText="Dismiss">
-          <ion-select-option value="Headache">Headache</ion-select-option>
-          <ion-select-option value="Stomach aches">Stomach aches </ion-select-option>
-          <ion-select-option value="Sore throats">Sore throats</ion-select-option>
-          <ion-select-option value="Back pain">Back pain</ion-select-option>
-          <ion-select-option value="Teeth ache">Teeth ache</ion-select-option>
-          <ion-select-option value="Other">Other</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item >
-        <ion-label mode="ios" >If other specify here :</ion-label>
-        <ion-input mode="ios" placeholder=""></ion-input>
-      </ion-item>
-
-      <ion-item >
-        <ion-label mode="ios" position="floating"> How bad ? (0-30)</ion-label>
-        <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
-          
-          <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
-        </ion-range>
-      </ion-item>
+      <div class="content" >
+        <ion-list mode="ios" lines="none">
+          <ion-item>
+            <ion-label mode="ios">Where have hurt?</ion-label>
+            <ion-select mode="ios" value="brown" okText="Okay" cancelText="Dismiss">
+              <ion-select-option value="Headache">Headache</ion-select-option>
+              <ion-select-option value="Stomach aches">Stomach aches </ion-select-option>
+              <ion-select-option value="Sore throats">Sore throats</ion-select-option>
+              <ion-select-option value="Back pain">Back pain</ion-select-option>
+              <ion-select-option value="Teeth ache">Teeth ache</ion-select-option>
+              <ion-select-option value="Other">Other</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item >
+            <ion-label mode="ios" >If other specify here :</ion-label>
+            <ion-input mode="ios" placeholder=""></ion-input>
+          </ion-item>
     
-      <ion-item>
-        <ion-label mode="ios"> How long has it been ?</ion-label>
-        <ion-datetime mode="ios" displayFormat="MM/DD/YYYY"></ion-datetime>
-      </ion-item>
- 
-      <ion-item>
-        <ion-label mode="ios" position="floating"> Do you have Fieber ?</ion-label>
-        <ion-range mode="ios" min="36" max="42" step="0.5" value="0" snaps pin color="danger">    
-          <ion-icon  slot="end" color="danger" name="thermometer"></ion-icon>
-        </ion-range>
-      </ion-item>
-    </ion-list>
-   </div>
-
-   <div class="content" *ngIf="step2">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div class="imageItem">
-            <div ><img class="image"src="../../assets/consultation/fatigue.jpg" alt=""></div>
-            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Tiredness</div>
-          </div>
-        </ion-col>
-        <ion-col>    
-          <div class="imageItem">
-            <div ><img class="image"src="../../assets/rhume.JPG" alt=""></div>
-            <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>Cold</div>
-          </div>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-         
-          <div class="imageItem">
-            <div><img class="image"src="../../assets/consultation/toux.jpg" alt=""></div>
-            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Cough</div>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="imageItem">
-            <div ><img class="image" src="../../assets/vertige.JPG" alt=""></div>
-            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Dizziness</div>
-          </div>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <div class="imageItem">
-            <div ><img src="../../assets/insomnie.JPG" class="image" alt=""></div>
-            <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>&nbsp;Insomnia</div>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="imageItem">
-            <div ><img class="image" src="../../assets/consultation/vomissement.jpg" alt=""></div>
-            <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Vomiting</div>
-          </div>
-        </ion-col>
-      </ion-row>
-
-      
-
-      <ion-row>
-        <ion-col>
-          <div class="imageItem padding">
-            <ion-item >
+          <ion-item >
+            <ion-label mode="ios" position="floating"> How bad ? (0-30)</ion-label>
+            <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
               
-              <ion-textarea clear-on-edit="true" placeholder="Please other Symptome here"></ion-textarea>
-            </ion-item>
-          </div>
-          
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+              <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
+            </ion-range>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label mode="ios"> How long has it been ?</ion-label>
+            <ion-datetime mode="ios" displayFormat="MM/DD/YYYY"></ion-datetime>
+          </ion-item>
+     
+          <ion-item>
+            <ion-label mode="ios" position="floating"> Do you have Fieber ?</ion-label>
+            <ion-range mode="ios" min="36" max="42" step="0.5" value="0" snaps pin color="danger">    
+              <ion-icon  slot="end" color="danger" name="thermometer"></ion-icon>
+            </ion-range>
+          </ion-item>
+
+          <ion-item >
+            <ion-label mode="ios" position="floating"> How tired ? (0-30)</ion-label>
+            <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
+              
+              <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </ion-list>
+       </div>
+      
+      
+    </ion-slide>
     
- </div>
+    <ion-slide>
+      
+      <div class="content">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div class="imageItem">
+                <div ><img class="image"src="../../assets/consultation/fatigue.jpg" alt=""></div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Tiredness</div>
+              </div>
+            </ion-col>
+            <ion-col>    
+              <div class="imageItem">
+                <div ><img class="image"src="../../assets/rhume.JPG" alt=""></div>
+                <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>Cold</div>
+              </div>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row>
+            <ion-col>
+             
+              <div class="imageItem">
+                <div><img class="image"src="../../assets/consultation/toux.jpg" alt=""></div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Cough</div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="imageItem">
+                <div ><img class="image" src="../../assets/vertige.JPG" alt=""></div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Dizziness</div>
+              </div>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row>
+            <ion-col>
+              <div class="imageItem">
+                <div ><img src="../../assets/insomnie.JPG" class="image" alt=""></div>
+                <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>&nbsp;Insomnia</div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="imageItem">
+                <div ><img class="image" src="../../assets/consultation/vomissement.jpg" alt=""></div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Vomiting</div>
+              </div>
+            </ion-col>
+          </ion-row>
+    
+          
+    
+          <ion-row>
+            <ion-col>
+              <div class="imageItem padding">
+                <ion-item >
+                  <ion-textarea clear-on-edit="true" placeholder="Please other Symptome here"></ion-textarea>
+                </ion-item>
+              </div>
+              
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+     </div>
+      
+      
+    </ion-slide>
+    
+    <ion-slide>
+      <ion-list>
+        <ion-item *ngFor="let doctor of doctors" (click)="selectDoctor(doctor)">
+          <ion-avatar slot="start">
+            <img src="../../assets/profilDefault.jpg" >
+          </ion-avatar>
+          <ion-label>
+            <h2>{{doctor.name}}</h2>
+            <p>{{doctor.town}}, Since {{doctor.startDate}} </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      
+    </ion-slide>
+    
+    <ion-slide>
+      
+      <div style="display: flex; flex-direction: column;">
+        <app-accordian title="Tipp 1">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed velit iure,
+            ea officia numquam provident suscipit, eius quis, fugit rem modi minus.
+            Nemo fuga nesciunt a non? Ut, vero veritatis?
+          </p>
+        </app-accordian>
+        <app-accordian title="Tipp 2">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed velit iure,
+            ea officia numquam provident suscipit, eius quis, fugit rem modi minus.
+            Nemo fuga nesciunt a non? Ut, vero veritatis?
+          </p>
+        </app-accordian>
+        <app-accordian title="Tipp 3">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed velit iure,
+            ea officia numquam provident suscipit, eius quis, fugit rem modi minus.
+            Nemo fuga nesciunt a non? Ut, vero veritatis?
+          </p>
+        </app-accordian>
+      </div>      
+      
+    </ion-slide>
+    
+  </ion-slides>
+  
+
+  
+
+   
+
+   
     
 </ion-content>

@@ -1,12 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Who am I?</ion-title>
+    <ion-buttons slot="end" (click)="themeToggle()">
+      <ion-icon slot="start" name="moon"></ion-icon>
+     </ion-buttons>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content >
-  <br>
-  <p>Choose your Identity</p>
+  <br><br>
+  <p class="top-line">Choose your Identity</p>
   <div class="ion-content">
 <br><br><br>
   <ion-grid>
@@ -22,7 +26,7 @@
         </ion-card>
       </ion-col>
       <ion-col>
-          <ion-card button="true" type="button" (click)="selectUser(2)" >
+          <ion-card button="true" type="button" (click)="selectUser(2)">
             <img src="../../assets/patient.jpg" alt="">
             <p>I am Patient</p>
         </ion-card>

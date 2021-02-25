@@ -24,7 +24,7 @@ export class HistoryPage implements OnInit {
   visits = [];
   fields = [];
   label : string; 
-
+  listview = true;
   visit = {
     id : "",
     reason : "",
@@ -74,6 +74,7 @@ export class HistoryPage implements OnInit {
   { 
     this.visit.id = this.generalService.userId;
     this.loadEvent();
+  
   }
 
   async presentAlert() {
@@ -138,7 +139,7 @@ async onEventSelected(event: any)
         other : this.fields
        }
      )
-
+   
     
     this.showHideForm();
 
@@ -171,12 +172,12 @@ async onEventSelected(event: any)
 
           this.visits.push(visitObject);
            this.fields = [];
-          console.log(visitObject)
+           this.visits.sort((a, b) => b.startTime - a.startTime)
         }
         this.myCalendar.loadEvents();
       });
     });
-
+    this.visits.sort((a, b) => b.startTime - a.startTime)
   }
   
   changeMode(mode: string)

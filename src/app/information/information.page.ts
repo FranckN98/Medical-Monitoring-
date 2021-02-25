@@ -18,11 +18,14 @@ export class InformationPage implements OnInit {
   key : any = 0;
   imageProfil : any;
   existImage : boolean = false; 
+
+
   constructor( public generalService: GeneralService,public afSG : AngularFireStorage, public afDB: AngularFireDatabase)
   { 
     this.patient.id = generalService.userId;
     this.read();
    this.getImagesDatabase();
+   this.fields.sort(function(a, b){return b - a});
   
   }
 
@@ -105,6 +108,7 @@ export class InformationPage implements OnInit {
     }
 
     this.edit = false;
+    this.fields.sort(function(a, b){return b - a});
      
   }
 

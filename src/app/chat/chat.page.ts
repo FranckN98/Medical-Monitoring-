@@ -11,7 +11,69 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class ChatPage implements OnInit {
 
   public messages: any = [];
-  doctors: any = []
+  doctors = [
+    {
+      name : "Rin",
+      town : "Paris", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Chriss Djoar",
+      town : "Ethiopie", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Henry Pford",
+      town : "Jaunde", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Gerharl Kevin",
+      town : "New York", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Rolando",
+      town : "Monaco", 
+      startDate : "02.12.2020"
+    },
+    {
+      name : "Mary Ross",
+      town : "Barcelona", 
+      startDate : "11.04.2019"
+    },
+    {
+      name : "Laury",
+      town : "Belgique", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Sonika Amadi",
+      town : "Kamerun", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Lindy Motoma",
+      town : "Bunja", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Iwabe Arima",
+      town : "Senegal", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Jürgen Müller",
+      town : "Köln", 
+      startDate : "02.12.2020"
+    },
+    {
+      name : "Cyndi Pria",
+      town : "Santa Barbara", 
+      startDate : "11.04.2019"
+    }
+
+  ]
   partnerSelect = false;
   selectedDoctor = { 
     name:"",
@@ -76,14 +138,14 @@ export class ChatPage implements OnInit {
   {
     this.afDB.list('DoctorList/').snapshotChanges(['child_added']).subscribe(
       actions => {
-        this.doctors = []; 
+        
         actions.forEach(action => {
           console.log(action.payload.exportVal().name);
           this.doctors.push({
             name:action.payload.exportVal().Name,
-            doctorId: action.payload.exportVal().id,
+          //  doctorId: action.payload.exportVal().id,
             startDate: action.payload.exportVal().startDate,
-            rating: action.payload.exportVal().rating,
+         //   rating: action.payload.exportVal().rating,
             town: action.payload.exportVal().town
           })
         })

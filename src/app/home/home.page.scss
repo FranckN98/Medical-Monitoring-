@@ -1,35 +1,31 @@
   
 
   
-.wave-container {
+.wave-container 
+{
   position: relative;
-
   text-align: center;
   overflow: hidden;
-
-
 }
-
-
-
-
-h2 {
+h2 
+{
   font-size: 2rem;
   margin: 3rem auto;
 }
-ion-title {
+ion-title 
+{
   font-size: 10px;
- 
 }
-ion-toolbar {
+ion-toolbar 
+{
   color: white;
   --background: #7590d6;
-  
 }
-ion-footer{
+ion-footer
+{
   --background: #7590d6;
-
 }
-ion-footer > svg {
+ion-footer > svg 
+{
   display: block;
 }

@@ -1,29 +1,26 @@
 <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
+        <ion-back-button defaultHref="/menu"></ion-back-button>
       </ion-buttons>
       <ion-title>
-       History {{currentMonth | titlecase}}
+       Verlauf von {{currentMonth | titlecase}}
       </ion-title>
       
     </ion-toolbar>
     
   </ion-header>
   
-  <ion-content class="ion-padding">
+  <ion-content class="ion-padding" *ngIf="listview">
 
     
      <div *ngIf="!showAddEvent" lines="none"> 
         <ion-segment value="DAY" scrollable>
-          <ion-segment-button value="day" (click)="changeMode('day')"   >
-            <ion-label>DAY</ion-label>
-          </ion-segment-button>
           <ion-segment-button value="week" (click)="changeMode('week')"  >
-            <ion-label>WEEK</ion-label>
+            <ion-label>Woche</ion-label>
           </ion-segment-button>
           <ion-segment-button value="month"  (click)="changeMode('month')" >
-            <ion-label>MONTH</ion-label >
+            <ion-label>Monat</ion-label >
           </ion-segment-button>
         </ion-segment>
       </div> 
@@ -32,26 +29,26 @@
     <div *ngIf="showAddEvent" class="ion-padding">
   <!-- TODO ranger par ordre alphabetique -->
       <ion-item line>
-        <ion-label position="floating" lines="none"><b>Reason for visit</b></ion-label>
+        <ion-label position="floating" lines="none"><b>Titel</b></ion-label>
         <ion-input type="text" placeholder="Reason for visit" [(ngModel)]="visit.reason" required></ion-input>
       </ion-item>
      
     <ion-item>
-        <ion-label position="floating" lines="none" ><b>Temperature</b></ion-label>
+        <ion-label position="floating" lines="none" ><b>Temperatur</b></ion-label>
         <ion-input type="number" placeholder="Temperature" min="35" max="40" [(ngModel)]="visit.temperature" required></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label position="floating" lines="none"><b>Medical prescription</b></ion-label>
+        <ion-label position="floating" lines="none"><b>Ärztliche Verschreibung</b></ion-label>
         <ion-textarea  placeholder="Medical prescription" [(ngModel)]="visit.prescription" required></ion-textarea>
     </ion-item>
 
      <ion-item>
-        <ion-label position="floating" lines="none"><b>Date of Visit</b></ion-label>
+        <ion-label position="floating" lines="none"><b>Datum des Besuchs</b></ion-label>
         <ion-datetime displayFormat="D MMM YYYY H:mm" pickerFormat="MMM D HH:mm" min="2019" [(ngModel)]="visit.startTime" required></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label position="floating" lines="none"><b>Next visit at:</b></ion-label>
+        <ion-label position="floating" lines="none"><b>Nächtstes Datum</b></ion-label>
         <ion-datetime displayFormat="D MMM YYYY H:mm" pickerFormat="MMM D HH:mm" min="2019" required [(ngModel)]="visit.endTime" ></ion-datetime>
       </ion-item>
 
@@ -66,21 +63,27 @@
       <br>
       
         <ion-item >
-            <ion-label position="floating" ><b>Create a new Field</b></ion-label>     
+            <ion-label position="floating" ><b>Neue Informationen</b></ion-label>     
             <ion-button color="secondary" slot="end"  (click)="newFields(label)"  [disabled]="!label"><ion-icon name="add-outline"></ion-icon>Add Field</ion-button>
           
             <ion-input type="text" placeholder="Label"   [(ngModel)]="label" required></ion-input>
         </ion-item>
     <br>
       
-      <ion-button color="secondary" expand="block" (click)="addEvent()">Add New Visit</ion-button>
+     
 
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="showHideForm()&&addEvent()">
+          <ion-icon *ngIf="showAddEvent" name="bookmark-outline"></ion-icon>
+            
+        </ion-fab-button>
+      </ion-fab>
     </div>
-
-    <br>
   
 
     <calendar id="myCalendar"
+      *ngIf="!showAddEvent" 
+      noEventsLabel =""
       locale="en-GB"
       [eventSource]="visits"
       [calendarMode] = "mode"
@@ -96,16 +99,37 @@
       class="calendar" lines="none">
   </calendar>
   
-  
-  
-  
-  
-  
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="showHideForm()">
-            <ion-icon *ngIf="showAddEvent" name="close"></ion-icon>
-            <ion-icon *ngIf="!showAddEvent" name="add"></ion-icon>
-        </ion-fab-button>
-        </ion-fab>
+   
   </ion-content>
-  
+  <ion-content *ngIf="listview && !showAddEvent">
+    <div >
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>
+            Besuche
+          </ion-label>
+        </ion-item-divider>
+      
+        <ion-item-sliding *ngFor=" let event of visits">
+          <ion-item>
+            <ion-badge color="primary">{{event.title}}</ion-badge>
+            
+            <ion-badge slot="end" color="success">{{event.startTime | date: 'dd/MM/yyyy hh:mm'}}</ion-badge>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option (click)="onEventSelected(event) ">
+              Mehr
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+    
+      </ion-item-group>
+      
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="showHideForm()">
+          <ion-icon *ngIf="showAddEvent" name="close"></ion-icon>
+          <ion-icon *ngIf="!showAddEvent" name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>

@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Consultation
+      Automatisierte Behandlung
     </ion-title>
     <ion-buttons slot="end">
      <ion-icon slot="start" name="grid-outline"></ion-icon>
@@ -13,7 +13,12 @@
   <ion-segment  mode="ios" [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event,i)">
     <ion-segment-button [value]="item" *ngFor="let item of segmentList;let i = index"
       (click)="_segmentSelected(item,i)">
-      <ion-label>{{item}}</ion-label>
+      <ion-label *ngIf="i==0">Zustand</ion-label>
+      <ion-label *ngIf="i==1">Symptomes</ion-label>
+      <ion-label *ngIf="i==2">Specialisten</ion-label>
+      <ion-label *ngIf="i==3">Tipps</ion-label>
+      
+     
     </ion-segment-button>
   </ion-segment>
 </ion-header>
@@ -28,23 +33,23 @@
       <div class="content" >
         <ion-list mode="ios" lines="none">
           <ion-item>
-            <ion-label mode="ios">Where have hurt?</ion-label>
+            <ion-label mode="ios">Wo fühlen Sie Schmerzen?</ion-label>
             <ion-select mode="ios" value="brown" okText="Okay" cancelText="Dismiss">
-              <ion-select-option value="Headache">Headache</ion-select-option>
-              <ion-select-option value="Stomach aches">Stomach aches </ion-select-option>
-              <ion-select-option value="Sore throats">Sore throats</ion-select-option>
-              <ion-select-option value="Back pain">Back pain</ion-select-option>
-              <ion-select-option value="Teeth ache">Teeth ache</ion-select-option>
-              <ion-select-option value="Other">Other</ion-select-option>
+              <ion-select-option value="Headache">Kopf</ion-select-option>
+              <ion-select-option value="Stomach aches">Bauch</ion-select-option>
+              <ion-select-option value="Sore throats">Hals</ion-select-option>
+              <ion-select-option value="Back pain">Rücken</ion-select-option>
+              <ion-select-option value="Teeth ache">Zähnen</ion-select-option>
+              <ion-select-option value="Other">Woanders</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item >
-            <ion-label mode="ios" >If other specify here :</ion-label>
+            <ion-label mode="ios" > Anderer Körperteil </ion-label>
             <ion-input mode="ios" placeholder=""></ion-input>
           </ion-item>
     
           <ion-item >
-            <ion-label mode="ios" position="floating"> How bad ? (0-30)</ion-label>
+            <ion-label mode="ios" position="floating"> Wie schlecht fühlen Sie sich ? (0-30)</ion-label>
             <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
               
               <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
@@ -52,19 +57,21 @@
           </ion-item>
         
           <ion-item>
-            <ion-label mode="ios"> How long has it been ?</ion-label>
+            <ion-label mode="ios"> Wie lange ist das her?</ion-label>
             <ion-datetime mode="ios" displayFormat="MM/DD/YYYY"></ion-datetime>
           </ion-item>
      
           <ion-item>
-            <ion-label mode="ios" position="floating"> Do you have Fieber ?</ion-label>
-            <ion-range mode="ios" min="36" max="42" step="0.5" value="0" snaps pin color="danger">    
-              <ion-icon  slot="end" color="danger" name="thermometer"></ion-icon>
+            <ion-label mode="ios" position="floating"> Temperatur / Unterkühlung ?</ion-label>
+           
+              <ion-range id="dual-range" dual-knobs pin color="dark">
+                <ion-icon  slot="start" color="danger" size="small" name="thermometer"></ion-icon>
+                <ion-icon  slot="end" color="danger" name="thermometer"></ion-icon>
             </ion-range>
           </ion-item>
 
           <ion-item >
-            <ion-label mode="ios" position="floating"> How tired ? (0-30)</ion-label>
+            <ion-label mode="ios" position="floating"> Wie müde fühlen Sie sich ? (0-30)</ion-label>
             <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
               
               <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
@@ -84,13 +91,13 @@
             <ion-col>
               <div class="imageItem">
                 <div ><img class="image"src="../../assets/consultation/fatigue.jpg" alt=""></div>
-                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Tiredness</div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Müdigkeit</div>
               </div>
             </ion-col>
             <ion-col>    
               <div class="imageItem">
                 <div ><img class="image"src="../../assets/rhume.JPG" alt=""></div>
-                <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>Cold</div>
+                <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>Erkältung</div>
               </div>
             </ion-col>
           </ion-row>
@@ -100,13 +107,13 @@
              
               <div class="imageItem">
                 <div><img class="image"src="../../assets/consultation/toux.jpg" alt=""></div>
-                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Cough</div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Husten</div>
               </div>
             </ion-col>
             <ion-col>
               <div class="imageItem">
                 <div ><img class="image" src="../../assets/vertige.JPG" alt=""></div>
-                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Dizziness</div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Schwindel</div>
               </div>
             </ion-col>
           </ion-row>
@@ -115,13 +122,13 @@
             <ion-col>
               <div class="imageItem">
                 <div ><img src="../../assets/insomnie.JPG" class="image" alt=""></div>
-                <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>&nbsp;Insomnia</div>
+                <div class="text"> <ion-checkbox color="success"   mode="md"></ion-checkbox>&nbsp;Schlaflosigkeit</div>
               </div>
             </ion-col>
             <ion-col>
               <div class="imageItem">
                 <div ><img class="image" src="../../assets/consultation/vomissement.jpg" alt=""></div>
-                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Vomiting</div>
+                <div class="text"> <ion-checkbox color="success"  mode="md"></ion-checkbox>&nbsp;Erbrechen</div>
               </div>
             </ion-col>
           </ion-row>
@@ -132,7 +139,7 @@
             <ion-col>
               <div class="imageItem padding">
                 <ion-item >
-                  <ion-textarea clear-on-edit="true" placeholder="Please other Symptome here"></ion-textarea>
+                  <ion-textarea clear-on-edit="true" placeholder="Andere Symptomes hier beschreiben"></ion-textarea>
                 </ion-item>
               </div>
               
@@ -153,7 +160,7 @@
           </ion-avatar>
           <ion-label>
             <h2>{{doctor.name}}</h2>
-            <p>{{doctor.town}}, Since {{doctor.startDate}} </p>
+            <p>{{doctor.town}}, Seit dem {{doctor.startDate}} </p>
           </ion-label>
         </ion-item>
       </ion-list>
@@ -188,13 +195,6 @@
       
     </ion-slide>
     
-  </ion-slides>
-  
-
-  
-
-   
-
-   
+  </ion-slides> 
     
 </ion-content>

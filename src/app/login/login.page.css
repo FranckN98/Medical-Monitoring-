@@ -11,13 +11,13 @@ ion-item{
     justify-content: space-between;
 }
 .logo{
-    height: 200px;
+    height: 180px;
     position: relative;
 }
 .logo ion-icon{
     position: absolute;
     font-size : 7em;
-    top:50%;
+    top:30%;
     left:50%;
     transform: translate(-50%,-50%);
 

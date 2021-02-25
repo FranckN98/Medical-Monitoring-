@@ -12,7 +12,7 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/menu"></ion-back-button>
       </ion-buttons>
-      <ion-title color="light" text-wrap>{{patient.name}}</ion-title>
+      <ion-title color="light" text-wrap>{{patient.name}}, {{patient.age}} y.o.</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -23,13 +23,14 @@
     <h2 text-wrap></h2>
     <div class="space-between">
       <div class="followings">
+        <p><b>Gewicht</b> </p>
         <ion-badge color="primary" mode="ios" > {{patient.weight}} Kg</ion-badge>   
-        <p>Weight </p>
       </div>
 
       <div class="followings">
-        <ion-badge color="primary" mode="ios">{{patient.age}}</ion-badge>
-        <p>Age </p>
+        <p><b>Blutgruppe</b></p>
+        <ion-badge color="primary" mode="ios">{{patient.bloodgroup}}</ion-badge>
+      
       </div>
      
     </div>
@@ -40,14 +41,15 @@
       <div class="border-white">
         <div class="img-box">
           <img *ngIf="!existImage"src="../../assets/profilExample.jpeg"  class="tweet-img" alt="Patient Image">
-
           <img *ngIf="existImage" [src]="imageProfil"  class="tweet-img" alt="Patient Image">
         </div>
       </div>
     </div>
   </div>
 
-  
+  <ion-list>
+    <ion-list-header>Geprüfte Daten</ion-list-header>
+    
   
   <ion-card >
     <ion-item lines="none" class="info">
@@ -81,15 +83,17 @@
     <ion-item lines="none" class="info">
 
       <ion-avatar slot="start">
-        <img src="../../assets/blood.jpg">
+        <img src="../../assets/job.jpg">
       </ion-avatar>
         <ion-label> 
-            <h2><b>Blood group</b></h2>  
-            <p>{{patient.bloodgroup}}</p>
+            <h2><b>Beruf</b></h2>  
+            <p>{{patient.job}}</p>
         </ion-label>
     </ion-item>
     
+
   </ion-card>
+ 
   <ion-card>
     <ion-item lines="none" class="info">
 
@@ -125,40 +129,11 @@
         <img src="../../assets/gender.png">
       </ion-avatar>
         <ion-label> 
-            <h2><b>Gender</b></h2>  
+            <h2><b>Genre</b></h2>  
             <p *ngIf="patient.gender=='male' || patient.gender=='Male'  "><ion-icon name="man-outline"></ion-icon><ion-icon name="male-outline"></ion-icon></p>
             <p *ngIf="patient.gender=='female' || patient.gender=='Female'"><ion-icon name="woman-outline"></ion-icon><ion-icon name="female-outline"></ion-icon></p>
             <p *ngIf="patient.gender=='other' || patient.gender=='Other' "><ion-icon name="male-female-outline"></ion-icon></p>
 
-        </ion-label>
-    </ion-item>
-    
-
-  </ion-card>
-
-  <ion-card>
-    <ion-item lines="none" class="info">
-
-      <ion-avatar slot="start">
-        <img src="../../assets/job.jpg">
-      </ion-avatar>
-        <ion-label> 
-            <h2><b>Job</b></h2>  
-            <p>{{patient.job}}</p>
-        </ion-label>
-    </ion-item>
-    
-
-  </ion-card>
-  <ion-card>
-    <ion-item lines="none" class="info">
-
-      <ion-avatar slot="start">
-        <img src="../../assets/disease.jpg">
-      </ion-avatar>
-        <ion-label> 
-            <h2><b>Recently contracted disease</b></h2>  
-            <p>{{patient.diseases}}</p>
         </ion-label>
     </ion-item>
     
@@ -172,8 +147,8 @@
         <img src="../../assets/size.jpg">
       </ion-avatar>
         <ion-label> 
-            <h2><b>Size</b></h2>  
-            <p>{{patient.size}}</p>
+            <h2><b>Größe</b></h2>  
+            <p>{{patient.size}} m</p>
         </ion-label>
     </ion-item>
     
@@ -181,6 +156,36 @@
   </ion-card>
 
  
+
+  <ion-card>
+    <ion-item lines="none" class="info">
+
+      <ion-avatar slot="start">
+        <img src="../../assets/vaccin.jpg">
+      </ion-avatar>
+        <ion-label> 
+            <h2><b> Impfungen</b></h2>  
+            <p>{{patient.vaccine}}</p>
+        </ion-label>
+    </ion-item>
+    
+
+  </ion-card>
+  <ion-card>
+    <ion-item lines="none" class="info">
+
+      <ion-avatar slot="start">
+        <img src="../../assets/disease.jpg">
+      </ion-avatar>
+        <ion-label> 
+            <h2><b>Krankheiten</b></h2>  
+            <p>{{patient.diseases}}</p>
+        </ion-label>
+    </ion-item>
+    
+
+  </ion-card>
+
  
   <ion-card>
     <ion-item lines="none" class="info">
@@ -189,7 +194,7 @@
         <img src="../../assets/smoke.jpg">
       </ion-avatar>
         <ion-label> 
-            <h2><b>Smoker</b></h2>  
+            <h2><b>Raucher</b></h2>  
             <p>{{patient.smoker}}</p>
         </ion-label>
     </ion-item>
@@ -197,20 +202,7 @@
 
   </ion-card>
  
-  <ion-card>
-    <ion-item lines="none" class="info">
-
-      <ion-avatar slot="start">
-        <img src="../../assets/vaccin.jpg">
-      </ion-avatar>
-        <ion-label> 
-            <h2><b> Vaccine</b></h2>  
-            <p>{{patient.vaccine}}</p>
-        </ion-label>
-    </ion-item>
-    
-
-  </ion-card>
+ 
 
 
   <ion-card>
@@ -228,8 +220,7 @@
 
   </ion-card>
   
-
-
+  <ion-list-header>Hinzugefügte Daten</ion-list-header>
   <ion-card *ngFor="let item of fields">
     <ion-item lines="none" class="info">
 
@@ -248,7 +239,7 @@
   
   
 
- 
+  </ion-list>
 </div>
 
 <ion-fab horizontal="end" *ngIf="!edit" vertical="bottom" slot="fixed" >
@@ -271,8 +262,23 @@
 <div *ngIf="edit" class="ion-padding" style="margin: 10px;">
   <!-- TODO ranger par ordre alphabetique -->
 
-     
-      <ion-item line>
+  <ion-item line>
+    <ion-label position="floating" lines="none"><b>Allergien</b></ion-label>
+    <ion-textarea  placeholder="Allergies" [(ngModel)]="patient.allergies" required></ion-textarea>
+  </ion-item>
+  <ion-item line>
+    <ion-label position="floating" lines="none"><b>Athletik</b></ion-label>
+    <ion-input type="text" [(ngModel)]="patient.athletic" required ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" lines="none" ><b>Beruf</b></ion-label>
+    <ion-input type="text" [(ngModel)]="patient.job" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" lines="none" ><b>Diabetik</b></ion-label>
+    <ion-input type="text" [(ngModel)]="patient.diabetic"  required></ion-input>
+</ion-item>
+    <ion-item line>
         <ion-label position="floating" lines="none"><b>Gewicht</b></ion-label>
         <ion-input type="number" [(ngModel)]="patient.weight" required ></ion-input>
       </ion-item>
@@ -282,83 +288,33 @@
     </ion-item>
 
     <ion-item line>
-      <ion-label position="floating" lines="none"><b>Raucher</b></ion-label>
-      <ion-input type="text" [(ngModel)]="patient.smoker" required ></ion-input>
-    </ion-item>
-    <ion-item line>
-      <ion-label position="floating" lines="none"><b>Athletik</b></ion-label>
-      <ion-input type="text" [(ngModel)]="patient.athletic" required ></ion-input>
-    </ion-item>
-    <ion-item line>
-      <ion-label position="floating" lines="none"><b>Ethnie</b></ion-label>
-      <ion-input type="text" [(ngModel)]="patient.ethnie" required></ion-input>
-    </ion-item>
-   
-      <ion-item>
-          <ion-label position="floating" lines="none" ><b>Beruf</b></ion-label>
-          <ion-input type="text" [(ngModel)]="patient.job" required></ion-input>
-      </ion-item>
-
-      <ion-item line>
-        <ion-label position="floating" lines="none"><b>Vegan/Vegetarier</b></ion-label>
-        <ion-input type="text" [(ngModel)]="patient.vegetarian" required ></ion-input>
-      </ion-item>
-      <ion-item>
-      <ion-label position="floating" lines="none" ><b>Blutgruppe</b></ion-label>
-      <ion-input type="text" [(ngModel)]="patient.bloodgroup"  required></ion-input>
-  </ion-item>
-    <ion-item>
-        <ion-label position="floating" lines="none" ><b>Diabetic</b></ion-label>
-        <ion-input type="text" [(ngModel)]="patient.diabetic"  required></ion-input>
-    </ion-item>
-    <ion-item line>
       <ion-label position="floating" lines="none"><b>Impfungen</b></ion-label>
       <ion-textarea  placeholder="Vaccine" [(ngModel)]="patient.vaccine"></ion-textarea>
     </ion-item>
-    <ion-item>
-        <ion-label position="floating" lines="none"><b>Allergien</b></ion-label>
-        <ion-textarea  placeholder="Allergies" [(ngModel)]="patient.allergies" required></ion-textarea>
+    <ion-item line>
+      <ion-label position="floating" lines="none"><b>Raucher</b></ion-label>
+      <ion-input type="text" [(ngModel)]="patient.smoker" required ></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating" lines="none"><b>Krankheiten </b></ion-label>
-      <ion-textarea  placeholder="Recently contracted disease" [(ngModel)]="patient.diseases" required></ion-textarea>
-    </ion-item>
-
+    <ion-item line>
+      <ion-label position="floating" lines="none"><b>Vegan/Vegetarier</b></ion-label>
+      <ion-input type="text" [(ngModel)]="patient.vegetarian" required ></ion-input>
+    </ion-item>  
      
-      <ion-item *ngFor="let field of fields" >
-        <ion-label position="floating" ><b>{{field.label}}</b></ion-label>
-        <ion-input type="text" placeholder="{{field.placeholder}}" [(ngModel)]="field.value" required></ion-input>
-        <ion-button color="danger" slot="end" (click)="deleteField(field.label)"><ion-icon name="close-outline"></ion-icon>delete</ion-button>
-      </ion-item>
+    <ion-item *ngFor="let field of fields" >
+      <ion-label position="floating" ><b>{{field.label}}</b></ion-label>
+      <ion-input type="text" placeholder="{{field.placeholder}}" [(ngModel)]="field.value" required></ion-input>
+      <ion-button color="danger" slot="end" (click)="deleteField(field.label)"><ion-icon name="close-outline"></ion-icon>delete</ion-button>
+    </ion-item>
       <br>
       
-        <ion-item >
-            <ion-label position="floating" ><b>Neue Informationen hinzufügen</b></ion-label>     
-            <ion-button color="secondary" slot="end"  (click)="newFields(label)"  [disabled]="!label"><ion-icon name="add-outline"></ion-icon>Add Field</ion-button>
-          
-            <ion-input type="text" placeholder="Label"   [(ngModel)]="label" ></ion-input>
-        </ion-item>
+      <ion-item >
+          <ion-label position="floating" ><b>Neue Informationen hinzufügen</b></ion-label>     
+          <ion-button color="secondary" slot="end"  (click)="newFields(label)"  [disabled]="!label"><ion-icon name="add-outline"></ion-icon>Add Field</ion-button>
+        
+          <ion-input type="text" placeholder="Label"   [(ngModel)]="label" ></ion-input>
+      </ion-item>
   
     </div>
  
 </ion-content>
-
-
-
-
-<!-- <div class="tabs">
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="dashboard">
-        <ion-icon name="speedometer"></ion-icon>
-        <ion-label>Dashboard</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="products">
-        <ion-icon name="list"></ion-icon>
-        <ion-label>Termine</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
- </div> -->

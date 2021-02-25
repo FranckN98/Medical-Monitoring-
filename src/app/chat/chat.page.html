@@ -40,7 +40,7 @@
   <div *ngIf="!partnerSelect">
     <ion-item *ngFor="let doctor of doctors" (click)="selectDoctor(doctor)">
       <ion-avatar slot="start">
-        <img src="../../assets/profilDefault.jpg" >
+        <img src="../../assets/profilDefault.jpg" class="imageProfil" >
       </ion-avatar>
       <ion-label>
         <h2>{{doctor.name}}</h2>

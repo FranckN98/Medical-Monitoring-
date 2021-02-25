@@ -37,6 +37,12 @@ ion-badge, ion-item {
 	white-space: pre-wrap;
 }
 
+.imageProfil
+{
+	border-radius: 50%;
+	border : solid 2px #5b3ff8;
+	padding: 2px;
+}
 .message{
 	padding: 10px;
 	border-radius: 10px;

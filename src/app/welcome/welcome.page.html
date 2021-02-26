@@ -17,22 +17,32 @@
         <ng-template matStepLabel><span style="color: white;">Patientenakte</span></ng-template>
         <div>
           <img src="../../assets/dessin3.png">
-
+          <br>
+          <ion-chip color="secondary">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <ion-label >Patientendaten für den Doktor</ion-label>
+          </ion-chip>
         </div>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel><span style="color: white;">Medizinischer Verlauf</span></ng-template>
         <div style="padding: 30px;">
-          <img src="../../assets/calendario.png" style="height: 80%; width: 80%;">
-
+          <img src="../../assets/calendario.png" style="height: 80%; width: 80%;"><br>
+          <ion-chip color="secondary">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <ion-label >Chronologische Krankheitsgeschichte</ion-label>
+          </ion-chip>
         </div>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel><span style="color: white;">Automatisierte Behandlung</span></ng-template>
         <div>
-          <img src="../../assets/dessin13.png">
+          <img src="../../assets/dessin13.png"><br>
           <!-- <ion-button size="small" class="ion-text-capitalize"  fill="outline">Check your Tempreture</ion-button> -->
-
+          <ion-chip  outline color="secondary">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <ion-label> Beschreibung des Zustandes des Patienten</ion-label>
+          </ion-chip>
         </div>
       </mat-step>
 
@@ -40,6 +50,10 @@
         <div style="padding: 0px 0px 30px 0px; margin: 0;">
           <img src="../../assets/dessin9.png" >
           <br>
+          <ion-chip  outline color="secondary">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <ion-label>Diagnose Ergebnismitteilung</ion-label>
+          </ion-chip>
           <ion-button href="/login"  fill="outline"class="ion-text-capitalize">Starten</ion-button>
         </div>
         <ng-template matStepLabel><span style="color: white;">Schnelles Gespräch </span></ng-template>

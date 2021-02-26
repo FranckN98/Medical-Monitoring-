@@ -34,7 +34,7 @@
         <ion-list mode="ios" lines="none">
           <ion-item>
             <ion-label mode="ios">Wo fühlen Sie Schmerzen?</ion-label>
-            <ion-select mode="ios" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select mode="ios" value="brown" okText="Ok" cancelText="Abbrechen">
               <ion-select-option value="Headache">Kopf</ion-select-option>
               <ion-select-option value="Stomach aches">Bauch</ion-select-option>
               <ion-select-option value="Sore throats">Hals</ion-select-option>
@@ -49,8 +49,8 @@
           </ion-item>
     
           <ion-item >
-            <ion-label mode="ios" position="floating"> Wie schlecht fühlen Sie sich ? (0-30)</ion-label>
-            <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
+            <ion-label mode="ios" position="floating"> Wie schlecht fühlen Sie sich ? (1-6)</ion-label>
+            <ion-range mode="ios" min="1" max="6"  snaps pin color="secondary">
               
               <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
             </ion-range>
@@ -62,17 +62,16 @@
           </ion-item>
      
           <ion-item>
-            <ion-label mode="ios" position="floating"> Temperatur / Unterkühlung ? °C</ion-label>
+            <ion-label mode="ios" position="floating"> Temperatur °C</ion-label>
            
-              <ion-range id="dual-range"  min="0" max="42" step="37" value="10" dual-knobs pin color="dark">
-                <ion-icon  slot="start" color="danger" size="small" name="thermometer"></ion-icon>
+              <ion-range  min="31" max="40" value="37" snaps pin color="danger">
                 <ion-icon  slot="end" color="danger" name="thermometer"></ion-icon>
             </ion-range>
           </ion-item>
-
+    
           <ion-item >
-            <ion-label mode="ios" position="floating"> Wie müde fühlen Sie sich ? (0-30)</ion-label>
-            <ion-range mode="ios" min="0" max="30" step="10" value="10" snaps pin color="secondary">
+            <ion-label mode="ios" position="floating"> Wie müde fühlen Sie sich ? (1-6)</ion-label>
+            <ion-range mode="ios" min="1" max="6" snaps pin color="secondary">
               
               <ion-icon slot="end" color="secondary" name="options-outline"></ion-icon>
             </ion-range>

@@ -11,21 +11,17 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class ChatPage implements OnInit {
 
   public messages: any = [];
-  doctors = [
-    {
-      name : "Rin",
-      town : "Paris", 
-      startDate : "02.04.2020"
-    },
+  doctors = [];
+  doctoren = [
     {
       name : "Chriss Djoar",
       town : "Ethiopie", 
       startDate : "02.04.2020"
     },
     {
-      name : "Henry Pford",
-      town : "Jaunde", 
-      startDate : "02.04.2020"
+      name : "Cyndi Pria",
+      town : "Santa Barbara", 
+      startDate : "11.04.2019"
     },
     {
       name : "Gerharl Kevin",
@@ -33,28 +29,8 @@ export class ChatPage implements OnInit {
       startDate : "02.04.2020"
     },
     {
-      name : "Rolando",
-      town : "Monaco", 
-      startDate : "02.12.2020"
-    },
-    {
-      name : "Mary Ross",
-      town : "Barcelona", 
-      startDate : "11.04.2019"
-    },
-    {
-      name : "Laury",
-      town : "Belgique", 
-      startDate : "02.04.2020"
-    },
-    {
-      name : "Sonika Amadi",
-      town : "Kamerun", 
-      startDate : "02.04.2020"
-    },
-    {
-      name : "Lindy Motoma",
-      town : "Bunja", 
+      name : "Henry Pford",
+      town : "Jaunde", 
       startDate : "02.04.2020"
     },
     {
@@ -68,10 +44,40 @@ export class ChatPage implements OnInit {
       startDate : "02.12.2020"
     },
     {
-      name : "Cyndi Pria",
-      town : "Santa Barbara", 
+      name : "Laury",
+      town : "Belgique", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Lindy Motoma",
+      town : "Bunja", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Mary Ross",
+      town : "Barcelona", 
       startDate : "11.04.2019"
-    }
+    },
+    {
+      name : "Rin",
+      town : "Paris", 
+      startDate : "02.04.2020"
+    },
+    {
+      name : "Rolando",
+      town : "Monaco", 
+      startDate : "02.12.2020"
+    },
+    
+    
+    {
+      name : "Sonika Amadi",
+      town : "Kamerun", 
+      startDate : "02.04.2020"
+    },
+    
+   
+    
 
   ]
   partnerSelect = false;
@@ -151,5 +157,8 @@ export class ChatPage implements OnInit {
         })
       }
     )
+
+    this.doctors.sort((a, b) => a.name - b.name);
+
   }
 }

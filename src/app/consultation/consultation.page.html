@@ -15,7 +15,7 @@
       (click)="_segmentSelected(item,i)">
       <ion-label *ngIf="i==0">Zustand</ion-label>
       <ion-label *ngIf="i==1">Symptome</ion-label>
-      <ion-label *ngIf="i==2">Specialisten</ion-label>
+      <ion-label *ngIf="i==2">Spezialisten</ion-label>
       <ion-label *ngIf="i==3">Tipps</ion-label>
       
      
@@ -154,7 +154,9 @@
     
     <ion-slide>
       <ion-list>
-      <h4>Wählen Sie einen Spezialist aus der sich Ihre Daten zu einem späteren Zeitpunkt anguckt</h4>
+        <ion-chip color="primary">
+          <ion-label outline>Wählen Sie einen Spezialist aus, der sich Ihre Daten zu einem späteren Zeitpunkt anguckt</ion-label>
+        </ion-chip>
 
         <ion-item *ngFor="let doctor of doctors" (click)="selectDoctor(doctor)">
           <ion-avatar slot="start">

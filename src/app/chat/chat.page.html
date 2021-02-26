@@ -11,12 +11,12 @@
 <ion-header *ngIf="!partnerSelect" translucent>
   <ion-toolbar>
     <ion-back-button slot="start" defaultHref="/"></ion-back-button>
-    <ion-title>Doctoren</ion-title>
+    <ion-title>Doktoren</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
-  <ion-searchbar type="text" placeholder="Dortor suchen" *ngIf="!partnerSelect"></ion-searchbar>
+  <ion-searchbar type="text" placeholder="Doktor suchen" *ngIf="!partnerSelect"></ion-searchbar>
   <div class="stream" *ngIf="partnerSelect">
     <ion-item lines="none" *ngFor="let message of messages">
         <ion-badge color="success" slot="start" size="7" *ngIf="message.userId == selectedDoctor.doctorId && message.partnerId == userId">

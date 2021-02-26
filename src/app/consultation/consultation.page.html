@@ -14,7 +14,7 @@
     <ion-segment-button [value]="item" *ngFor="let item of segmentList;let i = index"
       (click)="_segmentSelected(item,i)">
       <ion-label *ngIf="i==0">Zustand</ion-label>
-      <ion-label *ngIf="i==1">Symptomes</ion-label>
+      <ion-label *ngIf="i==1">Symptome</ion-label>
       <ion-label *ngIf="i==2">Specialisten</ion-label>
       <ion-label *ngIf="i==3">Tipps</ion-label>
       
@@ -62,9 +62,9 @@
           </ion-item>
      
           <ion-item>
-            <ion-label mode="ios" position="floating"> Temperatur / Unterkühlung ?</ion-label>
+            <ion-label mode="ios" position="floating"> Temperatur / Unterkühlung ? °C</ion-label>
            
-              <ion-range id="dual-range" dual-knobs pin color="dark">
+              <ion-range id="dual-range"  min="0" max="42" step="37" value="10" dual-knobs pin color="dark">
                 <ion-icon  slot="start" color="danger" size="small" name="thermometer"></ion-icon>
                 <ion-icon  slot="end" color="danger" name="thermometer"></ion-icon>
             </ion-range>
@@ -154,6 +154,8 @@
     
     <ion-slide>
       <ion-list>
+      <h4>Wählen Sie einen Spezialist aus der sich Ihre Daten zu einem späteren Zeitpunkt anguckt</h4>
+
         <ion-item *ngFor="let doctor of doctors" (click)="selectDoctor(doctor)">
           <ion-avatar slot="start">
             <img src="../../assets/profilDefault.jpg" >

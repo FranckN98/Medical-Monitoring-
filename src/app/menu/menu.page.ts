@@ -1,5 +1,6 @@
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from '../service/theme.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPage implements OnInit {
 
-  constructor(public nvctrl: NavController) { }
+  constructor(public nvctrl: NavController,  private themeService:ThemeService) { }
 
   ngOnInit() {
   }
@@ -17,5 +18,9 @@ export class MenuPage implements OnInit {
   {
     this.nvctrl.navigateForward('/info'); 
     console.log('work')
+  }
+  themeToggle()
+  {
+    this.themeService.setToggle();
   }
 }

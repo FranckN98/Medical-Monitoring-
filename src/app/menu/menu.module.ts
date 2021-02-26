@@ -10,6 +10,7 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 import { MenuPage } from './menu.page';
 
 import { AccordianModule} from '../accordian/accordian.module';
+import { TabMenuComponent } from '../tab-menu/tab-menu.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AccordianModule} from '../accordian/accordian.module';
     AccordianModule
 
   ],
-  declarations: [MenuPage]
+  entryComponents: [TabMenuComponent],
+  declarations: [MenuPage,TabMenuComponent]
 })
 export class MenuPageModule {
 

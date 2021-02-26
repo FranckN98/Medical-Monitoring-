@@ -33,7 +33,10 @@ export class GeneralService {
       }
     })
   }
-
+  getId()
+  {
+    return this.userId;
+  }
   selectUserType(i:number)
   {
     if(i == 1) // 1 = Not a Patient
@@ -57,7 +60,7 @@ export class GeneralService {
       {
         this.navCtrl.navigateRoot('/search');
         this.connected = true;
-        console.log("Alles gut");
+      
       }
       else
       {

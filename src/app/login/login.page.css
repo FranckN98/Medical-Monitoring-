@@ -3,7 +3,7 @@ ion-item{
     --ion-background-color: transparent !important;
 }
 .padding{
-    padding:5%;
+    padding:0% 5%;
 }
 .flex
 {
@@ -14,12 +14,11 @@ ion-item{
     height: 180px;
     position: relative;
 }
-.logo ion-icon{
-    position: absolute;
+.logo img{
+
     font-size : 7em;
-    top:30%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    padding-bottom: 50px;
+    margin-bottom: 25px;
 
 }
 .datetime-placeholder {

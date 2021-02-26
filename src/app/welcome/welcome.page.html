@@ -1,6 +1,12 @@
+<ion-header  >
+  <ion-toolbar>
+    <ion-title>
+      Über die App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-
-<ion-content fullscreen > 
+<ion-content fullscreen scrollable> 
 
   <div class="wave-container" >
     
@@ -10,13 +16,13 @@
       <mat-step>
         <ng-template matStepLabel><span style="color: white;">Patientenakte</span></ng-template>
         <div>
-          <img src="../../assets/dessin11.png">
+          <img src="../../assets/dessin3.png">
 
         </div>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel><span style="color: white;">Medizinischer Verlauf</span></ng-template>
-        <div>
+        <div style="padding: 30px;">
           <img src="../../assets/calendario.png" style="height: 80%; width: 80%;">
 
         </div>
@@ -31,8 +37,9 @@
       </mat-step>
 
       <mat-step>
-        <div>
-          <img src="../../assets/dessin9.png">
+        <div style="padding: 0px 0px 30px 0px; margin: 0;">
+          <img src="../../assets/dessin9.png" >
+          <br>
           <ion-button href="/login"  fill="outline"class="ion-text-capitalize">Starten</ion-button>
         </div>
         <ng-template matStepLabel><span style="color: white;">Schnelles Gespräch </span></ng-template>
